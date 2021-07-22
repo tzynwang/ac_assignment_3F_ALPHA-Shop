@@ -1,2 +1,7 @@
 @import 'reset';
+@import 'font';
 @import 'nav';
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+}
