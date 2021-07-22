@@ -221,6 +221,9 @@ header {
           align-items: center;
   font-weight: 500;
   cursor: pointer;
+  opacity: 0;
+  -webkit-transition: .2s .2s;
+  transition: .2s .2s;
 }
 
 .header__nav__categories--item::after {
@@ -258,6 +261,9 @@ header {
 .icon {
   margin: 0 1rem;
   cursor: pointer;
+  opacity: 0;
+  -webkit-transition: .2s .2s;
+  transition: .2s .2s;
 }
 
 .icon--search {
@@ -278,6 +284,11 @@ header {
 
 #header__menu:checked ~ .header__nav .header__nav__actions {
   top: calc(56px + 300px + 1rem);
+}
+
+#header__menu:checked ~ .header__nav .header__nav__categories--item,
+#header__menu:checked ~ .header__nav .icon {
+  opacity: 1;
 }
 
 @media screen and (min-width: 375px) {
@@ -321,6 +332,10 @@ header {
   }
   .header__nav__categories--item + .header__nav__categories--item {
     margin-left: 1rem;
+  }
+  .header__nav__categories--item,
+  .icon {
+    opacity: 1;
   }
 }
 
