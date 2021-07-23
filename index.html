@@ -36,7 +36,7 @@
     <h1 class="main__title">結帳</h1>
 
     <section class="main__progress">
-      <span class="main__progress__step main__progress__step--completed step--1">1</span>
+      <span class="main__progress__step step--1">1</span>
       <span class="step--description">寄送地址</span>
       <span class="main__progress__bar"></span>
       <span class="main__progress__step step--2">2</span>
@@ -49,7 +49,7 @@
     <div class="desktop-layout">
       <form class="main__form" action="/">
         <!-- address -->
-        <div class="main__form__section">
+        <div class="main__form__section address">
           <h2 class="main__form__title">寄送地址</h2>
           <div class="main__form__row main__form__row--title">
             <div class="main__form__row__col--title">
@@ -79,6 +79,7 @@
               <div class="select--wrapper">
                 <select name="city" id="city" required>
                   <option value="" selected>請選擇縣市</option>
+                  <option value="dummyValue">縣市</option>
                 </select>
               </div>
             </div>
@@ -90,7 +91,7 @@
         </div>
 
         <!-- delivery option -->
-        <div class="main__form__section">
+        <div class="main__form__section delivery-option d-none">
           <h2 class="main__form__title">運送方式</h2>
           <div class="main__form__row main__form__row--delivery">
             <input type="radio" name="delivery" id="deliveryStandard">
@@ -111,7 +112,7 @@
         </div>
 
         <!-- billing info -->
-        <div class="main__form__section">
+        <div class="main__form__section billing-info d-none">
           <h2 class="main__form__title">付款資訊</h2>
           <div class="main__form__row main__form__row--cardHolderName">
             <label for="cardHolderName">持卡人姓名</label>
@@ -135,8 +136,8 @@
 
         <!-- buttons -->
         <div class="main__form__row main__form__row--button-group">
-          <button class="button--step button--step--previous">上一步</button>
-          <button class="button--step button--step--next">下一步</button>
+          <button class="button--step button--step--previous d-none" id="previous">上一步</button>
+          <button class="button--step button--step--next" id="next">下一步</button>
         </div>
       </form>
 
@@ -221,6 +222,8 @@
       </div>
     </div>
   </footer>
+
+  <script src="./scripts/main.js"></script>
 </body>
 
 </html>
