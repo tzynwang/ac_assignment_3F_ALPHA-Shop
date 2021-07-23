@@ -1,13 +1,20 @@
 const elementObject = {
   previousStepButton: document.querySelector('#previous'),
-  nextStepButton: document.querySelector('#next')
+  nextStepButton: document.querySelector('#next'),
+  chartSection: document.querySelector('.main__chart'),
+  chartDeliveryCost: document.querySelector('.main__chart__delivery .price'),
+  chartTotalPrice: document.querySelector('.main__chart__total-amount .price'),
+  deliverySection: document.querySelector('.main__form__section.delivery-option')
 }
 
 const config = {
-  step: 1
+  step: 1,
+  deliveryOptionChecked: 'deliveryStandard',
+  deliveryCost: { deliveryStandard: '免費', deliveryDhl: 500 }
 }
 
-elementObject.nextStepButton.addEventListener('click', () => {
+elementObject.nextStepButton.addEventListener('click', event => {
+  event.preventDefault()
   if (config.step === 1) {
     elementObject.previousStepButton.classList.remove('d-none')
     document.querySelector('.main__progress__step.step--1').classList.add('main__progress__step--completed')
@@ -27,6 +34,7 @@ elementObject.nextStepButton.addEventListener('click', () => {
     elementObject.nextStepButton.classList.add('button--step--next--completed')
     config.step = 3
   }
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 })
 
 elementObject.previousStepButton.addEventListener('click', () => {
@@ -44,5 +52,45 @@ elementObject.previousStepButton.addEventListener('click', () => {
     elementObject.nextStepButton.classList.remove('button--step--next--completed')
     elementObject.nextStepButton.innerHTML = '下一步'
     config.step = 2
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+})
+
+elementObject.chartSection.addEventListener('click', event => {
+  const targetClass = event.target.classList.value // 'item--button remove', 'item--button add'
+  const qtyLabel = event.target.parentNode.querySelector('.item--qty--label')
+  const targetPrice = Number(event.target.closest('.item--description').querySelector('.price').innerText)
+
+  if (targetClass === 'item--button remove') {
+    if (Number(qtyLabel.value) > 1) {
+      qtyLabel.value = Number(qtyLabel.value) - 1
+    } else if (Number(qtyLabel.value) === 1) {
+      event.target.closest('.main__chart__item').remove()
+    }
+    elementObject.chartTotalPrice.innerText = Number(elementObject.chartTotalPrice.innerText) - targetPrice
+  }
+
+  if (targetClass === 'item--button add') {
+    qtyLabel.value = Number(qtyLabel.value) + 1
+    elementObject.chartTotalPrice.innerText = Number(elementObject.chartTotalPrice.innerText) + targetPrice
+  }
+})
+
+elementObject.deliverySection.addEventListener('click', (event) => {
+  event.stopPropagation()
+  if (event.target.tagName === 'INPUT') {
+    const checkedValue = event.target.value // deliveryStandard, deliveryDhl
+
+    if (checkedValue !== config.deliveryOptionChecked) {
+      elementObject.chartDeliveryCost.innerText = config.deliveryCost[checkedValue]
+      config.deliveryCost[checkedValue] === 500
+        ? elementObject.chartDeliveryCost.classList.remove('price--free')
+        : elementObject.chartDeliveryCost.classList.add('price--free')
+      config.deliveryOptionChecked = event.target.value
+
+      isNaN(Number(config.deliveryCost[checkedValue]))
+        ? elementObject.chartTotalPrice.innerText = Number(elementObject.chartTotalPrice.innerText) - 500
+        : elementObject.chartTotalPrice.innerText = Number(elementObject.chartTotalPrice.innerText) + 500
+    }
   }
 })

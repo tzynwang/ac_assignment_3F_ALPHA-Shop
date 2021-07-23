@@ -94,7 +94,7 @@
         <div class="main__form__section delivery-option d-none">
           <h2 class="main__form__title">運送方式</h2>
           <div class="main__form__row main__form__row--delivery">
-            <input type="radio" name="delivery" id="deliveryStandard">
+            <input type="radio" name="delivery" id="deliveryStandard" value="deliveryStandard" checked>
             <label for="deliveryStandard">
               <span class="deliver--method">標準運送</span>
               <span class="deliver--time">約 3~7 個工作天</span>
@@ -102,7 +102,7 @@
             <span class="price price--free">免費</span>
           </div>
           <div class="main__form__row main__form__row--delivery">
-            <input type="radio" name="delivery" id="deliveryDhl">
+            <input type="radio" name="delivery" id="deliveryDhl" value="deliveryDhl">
             <label for="deliveryDhl">
               <span class="deliver--method">DHL貨運</span>
               <span class="deliver--time">48 小時內送達</span>
@@ -136,8 +136,8 @@
 
         <!-- buttons -->
         <div class="main__form__row main__form__row--button-group">
-          <button class="button--step button--step--previous d-none" id="previous">上一步</button>
-          <button class="button--step button--step--next" id="next">下一步</button>
+          <button class="button--step button--step--previous d-none" id="previous" type="button">上一步</button>
+          <button class="button--step button--step--next" id="next" type="submit">下一步</button>
         </div>
       </form>
 
@@ -148,9 +148,9 @@
           <div class="item--description">
             <span class="item--title">破壞補丁修身牛仔褲</span>
             <div class="item--qty">
-              <button class="item--button add">-</button>
-              <input type="number" class="item--qty--label" placeholder="1" readonly>
-              <button class="item--button remove">+</button>
+              <button class="item--button remove">-</button>
+              <input type="number" class="item--qty--label" placeholder="1" value="1" readonly>
+              <button class="item--button add">+</button>
             </div>
             <span class="price">3999</span>
           </div>
@@ -160,9 +160,9 @@
           <div class="item--description">
             <span class="item--title">刷色直筒牛仔褲</span>
             <div class="item--qty">
-              <button class="item--button add">-</button>
-              <input type="number" class="item--qty--label" placeholder="1" readonly>
-              <button class="item--button remove">+</button>
+              <button class="item--button remove">-</button>
+              <input type="number" class="item--qty--label" placeholder="1" value="1" readonly>
+              <button class="item--button add">+</button>
             </div>
             <span class="price">1299</span>
           </div>
