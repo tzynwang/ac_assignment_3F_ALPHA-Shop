@@ -52,7 +52,11 @@ body {
   font-size: 16px;
 }
 
-.main__progress__step--completed::after {
+.step--description {
+  display: none;
+}
+
+.main__progress__step--completed::before {
   content: url('../images/progress-complete.svg');
   width: 100%;
   height: 100%;
@@ -199,10 +203,15 @@ body {
   }
 }
 
+.main__form__row__col--city {
+  margin-bottom: 1rem;
+}
+
 .main__form__row--button-group {
   width: 100%;
   height: calc(46px + 2rem);
   display: flex;
+  justify-content: space-between;
   align-items: center;
   position: absolute;
   top: 100%;
@@ -211,6 +220,7 @@ body {
 
 .button--step {
   height: 46px;
+  max-width: 174px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -325,5 +335,58 @@ body {
 @media screen and (min-width: 375px) {
   .main {
     margin-top: 60px;
+  }
+
+  .main__progress {
+    width: 50%;
+    margin-left: 0;
+  }
+
+  .step--description {
+    display: inline-block;
+  }
+
+  .desktop-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .main__form {
+      flex-basis: 50%;
+    }
+
+    .main__form__row--address {
+      display: flex;
+
+      .main__form__row__col--city {
+        flex-basis: 40%;
+      }
+
+      .main__form__row__col--address {
+        flex-grow: 1;
+        margin-left: 1rem;
+      }
+    }
+
+    .main__form__row__col--cardExpiredDate,
+    .main__form__row__col--cardCvc {
+      flex-grow: 1;
+    }
+
+    .main__chart {
+      position: relative;
+      top: -64px; // 32px + 2rem
+      flex-basis: 40%;
+    }
+  }
+
+  .main__form__row--cardHolderName,
+  .main__form__row--cardNumber {
+    width: 66.67%;
+    margin-left: 0;
+  }
+
+  .main__form__row--button-group {
+    position: static;
   }
 }
