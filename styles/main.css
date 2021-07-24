@@ -842,6 +842,12 @@ body {
   color: #000;
 }
 
+.main__chart__item .item--qty input[type=number]::-webkit-outer-spin-button,
+.main__chart__item .item--qty input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .main__chart__item .item--qty .item--button {
   width: 26px;
   height: 26px;

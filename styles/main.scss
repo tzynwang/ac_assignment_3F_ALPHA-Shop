@@ -313,6 +313,12 @@ body {
       }
     }
 
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
     .item--button {
       width: 26px;
       height: 26px;
