@@ -18,12 +18,14 @@ body {
 .main__title {
   margin-top: calc(60px + 1rem);
   margin-bottom: 1rem;
+  padding: 1rem 0;
   font-size: 24px;
   font-weight: 700;
 }
 
 .main__progress {
   margin: 1rem auto;
+  padding: 1rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
