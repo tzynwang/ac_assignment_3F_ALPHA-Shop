@@ -1,11 +1,16 @@
-$color-pink: #F67599;
-$color-gray-footer: #E5E5E5;
-$color-gray-primary: #2A2A2A; // most of the text, icon color
-$color-gray-primary-10: rgba(42, 42, 42, .1); // small device hr
-$color-gray-placeholder: #999999;
-$color-gray-secondary: #808080; // for footer anchor
-$color-gray-disable: #AFB1BD; // for step
-$color-gray-outline-button: #F0F0F5; // for chart button background, chart outline
-$color-gray-horizontal-line: #E6E6EB;
-$color-white: #fff;
-$color-black: #000;
+$primary: #F67599;
+
+$gray-2A: #2A2A2A; // most icon and label text color, active input border
+$gray-333: #333; // completed step bg color
+$gray-AFB1BD: #AFB1BD; // pending step border, text color
+
+
+$gray-4A: #4A4A4A; // address, billing border color
+$gray-80: #808080; // address, billing label text color
+$gray-99: #999999; // address, billing placeholder color
+
+$gray-F0F0F5: #F0F0F5; // qty button bg color, chart border, pending line border
+$gray-E6E6EB: #E6E6EB; // button section border-top
+
+$white: #fff;
+$black: #000; // step line color
