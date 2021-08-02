@@ -38,13 +38,95 @@
     <section>
       <form action="/">
         <!-- address -->
-        <div></div>
+        <div class="form__section">
+          <h2>寄送地址</h2>
+          <div class="form__section__row">
+            <label for="title">稱謂</label>
+            <select name="title" id="title" required>
+              <option value="m">先生</option>
+              <option value="f">小姐</option>
+              <option value="o">不透露</option>
+            </select>
+          </div>
+          <div class="form__section__row">
+            <label for="name">姓名</label>
+            <input type="text" name="name" id="name" placeholder="請輸入姓名">
+          </div>
+          <div class="form__section__row">
+            <label for="tel">電話</label>
+            <input type="tel" name="tel" id="tel" placeholder="請輸入行動電話">
+          </div>
+          <div class="form__section__row">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="請輸入電子郵件">
+          </div>
+          <div class="form__section__row">
+            <label for="city">縣市</label>
+            <select name="city" id="city" required>
+              <option value="">請選擇縣市</option>
+              <option value="TPE">臺北市</option>
+              <option value="NWT">新北市</option>
+              <option value="KHH">桃園市</option>
+              <option value="TXG">臺中市</option>
+              <option value="TNN">臺南市</option>
+              <option value="KHH">高雄市</option>
+            </select>
+          </div>
+          <div class="form__section__row">
+            <label for="address">地址</label>
+            <input type="text" name="address" id="address" placeholder="請輸入地址">
+          </div>
+        </div>
         <!-- delivery -->
-        <div></div>
+        <div class="form__section">
+          <h2>運送方式</h2>
+          <div class="form__section__row">
+            <input type="radio" name="delivery" id="standard">
+            <label class="form__section__row__delivery-label" for="delivery">
+              <span class="form__section__row__delivery-label--description">
+                標準運送<br>
+                約 3~7 個工作天
+              </span>
+              <span class="form__section__row__delivery-label--cost">免費</span>
+            </label>
+          </div>
+          <div class="form__section__row">
+            <input type="radio" name="delivery" id="dhl">
+            <label class="form__section__row__delivery-label" for="delivery">
+              <span class="form__section__row__delivery-label--description">
+                DHL 貨運<br>
+                48 小時內送達
+              </span>
+              <span class="form__section__row__delivery-label--cost">500</span>
+            </label>
+          </div>
+        </div>
         <!-- billing -->
-        <div></div>
-        <!-- button group -->
-        <div></div>
+        <div class="form__section">
+          <h2>付款資訊</h2>
+          <div class="form__section__row">
+            <label for="cardHolder">持卡人姓名</label>
+            <input type="text" name="cardHolder" id="cardHolder" placeholder="John Doe">
+          </div>
+          <div class="form__section__row">
+            <label for="cardNumber">卡號</label>
+            <input type="tel" name="cardNumber" id="cardNumber" inputmode="numeric"
+              placeholder="1111 2222 3333 4444">
+          </div>
+          <div class="form__section__row">
+            <label for="cardExpirationDate">有效期限</label>
+            <input type="tel" name="cardExpirationDate" id="cardExpirationDate" inputmode="numeric" placeholder="MM/YY">
+          </div>
+          <div class="form__section__row">
+            <label for="cardCVC">CVC / CCV </label>
+            <input type="tel" name="cardCVC" id="cardCVC" inputmode="numeric" placeholder="123">
+          </div>
+        </div>
+        <!-- buttons group -->
+        <div class="form__section buttons-group">
+          <button class="form__section__button form__section__button--previous"></button>
+          <button class="form__section__button form__section__button--next"></button>
+        </div>
       </form>
     </section>
 
