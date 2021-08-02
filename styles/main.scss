@@ -5,6 +5,10 @@
 
 @import 'color';
 
+@mixin border ($color) {
+  border: 1px solid $color;
+}
+
 %container {
   width: 90%;
   margin: 0 auto;
@@ -14,7 +18,7 @@
   height: 40px;
   width: 100%;
   padding-left: 1rem;
-  border: 1px solid $gray-4A;
+  @include border($gray-4A);
   border-radius: 4px;
   background-color: transparent;
 }
@@ -59,9 +63,10 @@ body {
   width: 32px;
   height: 32px;
   margin: 0 auto;
+  
   border-radius: 50%;
-
-  border: 1px solid $gray-AFB1BD;
+  @include border($gray-AFB1BD);
+  
   color: $gray-AFB1BD;  
 }
 
@@ -206,8 +211,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    border: 1px solid $gray-F0F0F5;
+    
     border-radius: 4px;
+    @include border($gray-F0F0F5);
   }
 
   input[type="radio"] {
@@ -218,7 +224,7 @@ body {
 
     -webkit-appearance: none;
     border-radius: 50%;
-    border: 1px solid $gray-2A;
+    @include border($gray-2A);
     cursor: pointer;
 
     &:checked {
@@ -313,8 +319,8 @@ body {
   margin-bottom: 1rem;
   padding: 1rem;
 
-  border: 1px solid $gray-F0F0F5;
   border-radius: 8px;
+  @include border($gray-F0F0F5);
 
   h2 {
     display: none;
@@ -382,7 +388,7 @@ body {
 .chart__section--delivery,
 .chart__section--sum {
   padding: 1rem 1rem 0 1rem;
-  border-top: 1px solid $gray-F0F0F5;
+  @include border($gray-F0F0F5);
 }
 
 @media screen and (min-width: 375px) {
