@@ -478,15 +478,15 @@ body {
   .stepper,
   .form,
   .chart {
-    display: inline-block;
+    display: block;
   }
-  .stepper,
-  .form {
-    width: 50vw;
+  .stepper {
+    width: calc(50vw * 0.9);
+    margin-left: 5%;
   }
   .stepper-list__item--icon,
   .stepper-list__item--text {
-    display: block;
+    display: inline-block;
   }
   .stepper-list__item--text {
     margin: .5rem auto 0;
@@ -494,15 +494,17 @@ body {
     color: #AFB1BD;
   }
   .stepper-list__item:not(:last-child)::after {
-    left: calc(50% + 32px + .5rem);
-    width: calc(100% - 32px - 64px);
+    left: calc(32px + 64px + 1rem);
+    width: calc(100% - 32px - 64px - 2rem);
   }
   .completed .stepper-list__item--text,
   .active .stepper-list__item--text {
     color: #333;
   }
   .form {
+    width: calc(50vw * 0.9);
     height: calc(494px - 61px);
+    margin-left: 2.5%;
   }
   .form form {
     height: 100%;
