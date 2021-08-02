@@ -14,6 +14,18 @@
   margin: 0 auto;
 }
 
+%progress-line {
+  content: '';
+  position: absolute;
+  top: 16px;
+
+  display: block;
+  width: calc(100% - 1rem);
+  height: 1px;
+
+  background-color: $gray-AFB1BD;
+}
+
 %input-and-select-style {
   height: 40px;
   width: 100%;
@@ -50,6 +62,7 @@ body {
 }
 
 .stepper-list {
+  width: 100%;
   display: flex;
 }
 
@@ -67,7 +80,19 @@ body {
   border-radius: 50%;
   @include border($gray-AFB1BD);
   
-  color: $gray-AFB1BD;  
+  color: $gray-AFB1BD;
+}
+
+.stepper-list__item:first-child {
+  .stepper-list__item--icon {
+    margin-left: 0;
+  }
+}
+
+.stepper-list__item:last-child {
+  .stepper-list__item--icon {
+    margin-right: 0;
+  }
 }
 
 @for $i from 1 through 3 {
@@ -84,17 +109,14 @@ body {
 }
 
 // progress line
-.stepper-list__item:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 16px;
+.stepper-list__item:first-child::after {
+  @extend %progress-line;
+  left: calc(32px + .5rem);
+}
+
+.stepper-list__item:nth-child(2)::after {
+  @extend %progress-line;
   left: calc(50% + 16px + .5rem);
-
-  display: block;
-  width: calc(100% - 32px - 1rem);
-  height: 1px;
-
-  background-color: $gray-AFB1BD;
 }
 
 .stepper-list__item--text {

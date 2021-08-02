@@ -62,6 +62,16 @@ footer {
   margin: 0 auto;
 }
 
+.stepper-list__item:first-child::after, .stepper-list__item:nth-child(2)::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  display: block;
+  width: calc(100% - 1rem);
+  height: 1px;
+  background-color: #AFB1BD;
+}
+
 .form__section__row input, .form__section__row select {
   height: 40px;
   width: 100%;
@@ -92,6 +102,7 @@ body {
 }
 
 .stepper-list {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -112,6 +123,14 @@ body {
   border-radius: 50%;
   border: 1px solid #AFB1BD;
   color: #AFB1BD;
+}
+
+.stepper-list__item:first-child .stepper-list__item--icon {
+  margin-left: 0;
+}
+
+.stepper-list__item:last-child .stepper-list__item--icon {
+  margin-right: 0;
 }
 
 .stepper-list__item:nth-child(1) .stepper-list__item--icon::before {
@@ -159,15 +178,12 @@ body {
   height: 100%;
 }
 
-.stepper-list__item:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 16px;
+.stepper-list__item:first-child::after {
+  left: calc(32px + .5rem);
+}
+
+.stepper-list__item:nth-child(2)::after {
   left: calc(50% + 16px + .5rem);
-  display: block;
-  width: calc(100% - 32px - 1rem);
-  height: 1px;
-  background-color: #AFB1BD;
 }
 
 .stepper-list__item--text {
