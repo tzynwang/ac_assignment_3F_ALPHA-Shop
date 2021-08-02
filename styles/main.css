@@ -155,19 +155,47 @@ body {
   display: none;
 }
 
+.stepper-list__item.completed::after {
+  background-color: #2A2A2A;
+}
+
+.stepper-list__item.completed .stepper-list__item--icon {
+  border-color: #2A2A2A;
+  background-color: #2A2A2A;
+  color: #fff;
+}
+
 .stepper-list__item.completed .stepper-list__item--icon::before {
   content: '\2713';
 }
 
-.stepper-list__item.completed::after,
 .stepper-list__item.active::after {
   background-color: #2A2A2A;
 }
 
-.stepper-list__item.completed .stepper-list__item--icon,
 .stepper-list__item.active .stepper-list__item--icon {
   border-color: #2A2A2A;
-  background-color: #2A2A2A;
-  color: #fff;
+  background-color: #fff;
+  color: #2A2A2A;
+}
+
+@media screen and (min-width: 375px) {
+  .stepper-list__item--icon,
+  .stepper-list__item--text {
+    display: block;
+  }
+  .stepper-list__item--text {
+    margin: .5rem auto 0;
+    text-align: center;
+    color: #AFB1BD;
+  }
+  .stepper-list__item:not(:last-child)::after {
+    left: calc(50% + 32px + .5rem);
+    width: calc(100% - 32px - 64px);
+  }
+  .completed .stepper-list__item--text,
+  .active .stepper-list__item--text {
+    color: #333;
+  }
 }
 /*# sourceMappingURL=main.css.map */
