@@ -388,7 +388,7 @@ body {
 .chart__section--delivery,
 .chart__section--sum {
   padding: 1rem 1rem 0 1rem;
-  @include border($gray-F0F0F5);
+  border-top: 1px solid $gray-F0F0F5;
 }
 
 @media screen and (min-width: 375px) {
