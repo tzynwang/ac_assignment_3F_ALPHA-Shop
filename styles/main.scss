@@ -24,6 +24,10 @@
   color: $gray-99;
 }
 
+.d-none {
+  display: none;
+}
+
 body {
   font-family: 'Noto Sans', sans-serif;
 }
@@ -301,10 +305,79 @@ body {
   }
 }
 
-.d-none {
-  display: none;
+.chart {
+  @extend %container;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+
+  border: 1px solid $gray-F0F0F5;
+  border-radius: 8px;
 }
 
+.chart__section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chart__section+.chart__section {
+  margin-top: 1rem;
+}
+
+.chart__section__image {
+  width: 100px;
+  height: 100px;
+}
+
+.chart__section__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  
+  flex: 1;
+}
+
+.chart__section__description--item-name {
+  font-size: 16px;
+  color: $gray-2A;
+}
+
+.chart__section__description--item-qty {
+  width: 140px;
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+  }
+}
+
+.qyt-minus,
+.qty-plus {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: $gray-F0F0F5;
+}
+
+.chart__section__description--item-price,
+.chart__section--delivery__price,
+.chart__section--sum__price {
+  font-size: 16px;
+  font-weight: bold;
+  color: $black;
+}
+
+.chart__section--delivery,
+.chart__section--sum {
+  padding: 1rem 1rem 0 1rem;
+  border-top: 1px solid $gray-F0F0F5;
+}
 
 @media screen and (min-width: 375px) {
   .stepper-list__item--icon,

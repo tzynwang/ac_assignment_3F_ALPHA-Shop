@@ -57,7 +57,7 @@ footer {
   }
 }
 
-.main-title, .stepper, .form__section {
+.main-title, .stepper, .form__section, .chart {
   width: 90%;
   margin: 0 auto;
 }
@@ -74,6 +74,10 @@ footer {
 .form__section__row input::-webkit-input-placeholder, .form__section__row select:invalid {
   font-size: 12px;
   color: #999999;
+}
+
+.d-none {
+  display: none;
 }
 
 body {
@@ -365,8 +369,100 @@ body {
   font-size: 14px;
 }
 
-.d-none {
-  display: none;
+.chart {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #F0F0F5;
+  border-radius: 8px;
+}
+
+.chart__section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.chart__section + .chart__section {
+  margin-top: 1rem;
+}
+
+.chart__section__image {
+  width: 100px;
+  height: 100px;
+}
+
+.chart__section__description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.chart__section__description--item-name {
+  font-size: 16px;
+  color: #2A2A2A;
+}
+
+.chart__section__description--item-qty {
+  width: 140px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.chart__section__description--item-qty span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+}
+
+.qyt-minus,
+.qty-plus {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #F0F0F5;
+}
+
+.chart__section__description--item-price,
+.chart__section--delivery__price,
+.chart__section--sum__price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+.chart__section--delivery,
+.chart__section--sum {
+  padding: 1rem 1rem 0 1rem;
+  border-top: 1px solid #F0F0F5;
 }
 
 @media screen and (min-width: 375px) {
