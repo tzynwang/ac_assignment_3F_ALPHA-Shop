@@ -35,10 +35,10 @@
     </section>
 
     <!-- form -->
-    <section>
+    <section class="form">
       <form action="/">
         <!-- address -->
-        <div class="form__section">
+        <div class="form__section form__section--address d-none">
           <h2>寄送地址</h2>
           <div class="form__section__row form__section__row--title">
             <label for="title">稱謂</label>
@@ -54,15 +54,15 @@
             <label for="name">姓名</label>
             <input type="text" name="name" id="name" placeholder="請輸入姓名">
           </div>
-          <div class="form__section__row">
+          <div class="form__section__row form__section__row--tel">
             <label for="tel">電話</label>
             <input type="tel" name="tel" id="tel" placeholder="請輸入行動電話">
           </div>
-          <div class="form__section__row">
+          <div class="form__section__row form__section__row--email">
             <label for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="請輸入電子郵件">
           </div>
-          <div class="form__section__row">
+          <div class="form__section__row form__section__row--city">
             <label for="city">縣市</label>
             <div class="select-wrapper">
               <select name="city" id="city" required>
@@ -76,13 +76,13 @@
               </select>
             </div>
           </div>
-          <div class="form__section__row">
+          <div class="form__section__row form__section__row--address">
             <label for="address">地址</label>
             <input type="text" name="address" id="address" placeholder="請輸入地址">
           </div>
         </div>
         <!-- delivery -->
-        <div class="form__section form__section--delivery">
+        <div class="form__section form__section--delivery d-none">
           <h2>運送方式</h2>
           <div class="form__section__row">
             <input type="radio" name="delivery" id="standard">
@@ -108,13 +108,13 @@
           </div>
         </div>
         <!-- billing -->
-        <div class="form__section">
+        <div class="form__section form__section--billing ">
           <h2>付款資訊</h2>
-          <div class="form__section__row">
+          <div class="form__section__row form__section__row--cardHolder">
             <label for="cardHolder">持卡人姓名</label>
             <input type="text" name="cardHolder" id="cardHolder" placeholder="John Doe">
           </div>
-          <div class="form__section__row">
+          <div class="form__section__row form__section__row--cardNumber">
             <label for="cardNumber">卡號</label>
             <input type="tel" name="cardNumber" id="cardNumber" inputmode="numeric"
               placeholder="1111 2222 3333 4444">
@@ -130,14 +130,15 @@
         </div>
         <!-- buttons group -->
         <div class="form__section buttons-group">
-          <button class="form__section__button form__section__button--previous d-none"></button>
-          <button class="form__section__button form__section__button--next"></button>
+          <button class="form__section__button form__section__button--previous">上一步</button>
+          <button class="form__section__button form__section__button--next">下一步</button>
         </div>
       </form>
     </section>
 
     <!-- chart -->
     <section class="chart">
+      <h2>購物籃</h2>
       <div class="chart__section">
         <img class="chart__section__image" src="./images/chart-img-1.png" alt="chart item preview image">
         <div class="chart__section__description">
