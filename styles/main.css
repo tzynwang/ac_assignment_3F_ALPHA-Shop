@@ -427,9 +427,9 @@ body {
 }
 
 .main {
+  position: relative;
   width: 90%;
   margin: 56px auto 0;
-  position: relative;
 }
 
 .main__title {
@@ -455,9 +455,11 @@ body {
 }
 
 .main__progress__bar {
-  width: 60px;
-  height: 2px;
   display: inline-block;
+  height: 2px;
+  -webkit-box-flex: 0.3;
+      -ms-flex-positive: 0.3;
+          flex-grow: 0.3;
   background-color: #000;
 }
 
@@ -466,9 +468,9 @@ body {
 }
 
 .main__progress__step {
+  position: relative;
   width: 32px;
   height: 32px;
-  position: relative;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -490,15 +492,27 @@ body {
   color: #fff;
 }
 
+.main__progress__step.step--1::before {
+  content: "1";
+}
+
+.main__progress__step.step--2::before {
+  content: "2";
+}
+
+.main__progress__step.step--3::before {
+  content: "3";
+}
+
 .step--description {
   display: none;
 }
 
-.main__progress__step--completed::before {
+.main__progress__step.main__progress__step--completed::before {
   content: url("../images/progress-complete.svg");
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -513,9 +527,13 @@ body {
   color: #fff;
 }
 
-.main__progress__step--uncompleted {
+.main__progress__step.main__progress__step--uncompleted {
   border-color: #AFB1BD;
   color: #AFB1BD;
+}
+
+.main__form__section {
+  width: 100%;
 }
 
 .main__form__title {
@@ -535,9 +553,9 @@ body {
 }
 
 .main__form__row input, .main__form__row select {
+  display: inline-block;
   width: 100%;
   height: 40px;
-  display: inline-block;
   padding-left: 1rem;
   border: 1px solid #4A4A4A;
   border-radius: 4px;
@@ -599,16 +617,17 @@ body {
 
 .main__form__row input[type='radio']:checked::before {
   content: '';
-  width: 100%;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   border: 1px solid #2A2A2A;
   border-radius: 4px;
 }
 
 .main__form__row input[type='radio'] ~ label {
+  margin: 0;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -619,18 +638,20 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  margin: 0;
   color: #000;
 }
 
 .main__form__row--delivery {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
   border: 1px solid #F0F0F5;
   border-radius: 4px;
 }
@@ -682,6 +703,8 @@ body {
 }
 
 .main__form__row--button-group {
+  position: absolute;
+  top: 100%;
   width: 100%;
   height: calc(46px + 2rem);
   display: -webkit-box;
@@ -693,8 +716,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: absolute;
-  top: 100%;
   border-top: 1px solid #E6E6EB;
 }
 
@@ -747,43 +768,46 @@ body {
 
 .main__chart {
   width: 100%;
+  padding: 1rem;
   border: 1px solid #F0F0F5;
   border-radius: 8px;
-  padding: 1rem;
 }
 
 .main__chart__item {
+  margin-bottom: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 1rem;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
 .main__chart__item .item--image {
   width: 100px;
   height: 100px;
+  border-radius: 4px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 4px;
 }
 
 .main__chart__item .item--description {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .main__chart__item .item--title {
@@ -844,8 +868,8 @@ body {
 
 .main__chart__item .item--qty input[type=number]::-webkit-outer-spin-button,
 .main__chart__item .item--qty input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
   margin: 0;
+  -webkit-appearance: none;
 }
 
 .main__chart__item .item--qty .item--button {
@@ -860,9 +884,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  outline: none;
   border-radius: 50%;
   border: none;
-  outline: none;
   background-color: #F0F0F5;
   font-size: 20px;
   cursor: pointer;
@@ -884,6 +908,9 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   padding: 1rem 0;
   border-top: 1px solid #F0F0F5;
 }
@@ -894,12 +921,12 @@ body {
 
 @media screen and (min-width: 375px) {
   .main {
-    width: 80%;
     margin-top: 60px;
+    width: 80%;
   }
   .main__progress {
-    width: 50%;
     margin-left: 0;
+    width: 50%;
   }
   .step--description {
     display: inline-block;
@@ -916,17 +943,20 @@ body {
             align-items: flex-start;
   }
   .desktop-layout .main__form {
+    min-height: 500px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    min-height: 500px;
     -ms-flex-preferred-size: 50%;
         flex-basis: 50%;
   }
@@ -940,10 +970,10 @@ body {
         flex-basis: 40%;
   }
   .desktop-layout .main__form__row--address .main__form__row__col--address {
+    margin-left: 1rem;
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
-    margin-left: 1rem;
   }
   .desktop-layout .main__form__row__col--cardExpiredDate,
   .desktop-layout .main__form__row__col--cardCvc {
@@ -959,8 +989,8 @@ body {
   }
   .main__form__row--cardHolderName,
   .main__form__row--cardNumber {
-    width: 66.67%;
     margin-left: 0;
+    width: 66.67%;
   }
   .main__form__row--button-group {
     position: static;
@@ -971,6 +1001,9 @@ body {
   .button--step.d-none {
     display: unset;
     visibility: hidden;
+  }
+  .footer__container__item--list {
+    cursor: pointer;
   }
 }
 /*# sourceMappingURL=main.css.map */

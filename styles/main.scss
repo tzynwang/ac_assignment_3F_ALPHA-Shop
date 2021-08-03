@@ -1,4 +1,5 @@
 @import 'reset';
+@import 'mixin';
 @import 'font';
 @import 'nav';
 @import 'footer';
@@ -10,15 +11,16 @@ body {
 }
 
 .main {
+  position: relative;
   width: 90%;
   margin: 56px auto 0;
-  position: relative;
 }
 
 .main__title {
   margin-top: calc(60px + 1rem);
   margin-bottom: 1rem;
   padding: 1rem 0;
+
   font-size: 24px;
   font-weight: 700;
 }
@@ -26,15 +28,15 @@ body {
 .main__progress {
   margin: 1rem auto;
   padding: 1rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+  @include flex(flex, space-between, center);
 }
 
 .main__progress__bar {
-  width: 60px;
-  height: 2px;
   display: inline-block;
+  height: 2px;
+  flex-grow: 0.3;
+
   background-color: $color-black;
 }
 
@@ -43,15 +45,16 @@ body {
 }
 
 .main__progress__step {
+  position: relative;
   width: 32px;
   height: 32px;
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+
+  @include flex(inline-flex, center, center);
   flex-shrink: 0;
+
   border-radius: 50%;
-  border: 1px solid $color-gray-primary;
+  @include border-solid-1px($color-gray-primary);
+
   font-size: 16px;
 }
 
@@ -60,30 +63,44 @@ body {
   color: $color-white;
 }
 
+@for $i from 1 through 3 {
+  .main__progress__step.step--#{$i}::before {
+    content: '#{$i}';
+  }
+}
+
 .step--description {
   display: none;
 }
 
-.main__progress__step--completed::before {
-  content: url('../images/progress-complete.svg');
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  background-color: $color-gray-primary;
-  color: #fff;
+.main__progress__step {
+  &.main__progress__step--completed::before {
+    content: url('../images/progress-complete.svg');
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    @include flex(flex, center, center);
+
+    border-radius: 50%;
+    background-color: $color-gray-primary;
+    color: #fff;
+  }
+
+  &.main__progress__step--uncompleted {
+    border-color: $color-gray-disable;
+    color: $color-gray-disable;
+  }
 }
 
-.main__progress__step--uncompleted {
-  border-color: $color-gray-disable;
-  color: $color-gray-disable;
+.main__form__section {
+  width: 100%;
 }
 
 .main__form__title {
   margin-bottom: 1.5rem;
+
   font-size: 24px;
   font-weight: 700;
 }
@@ -98,13 +115,13 @@ body {
   }
 
   input, select {
+    display: inline-block;
     width: 100%;
     height: 40px;
-    display: inline-block;
 
     padding-left: 1rem;
 
-    border: 1px solid #4A4A4A;
+    @include border-solid-1px($color-gray-input-border);
     border-radius: 4px;
   }
 
@@ -129,6 +146,7 @@ body {
       position: absolute;
       top: 50%;
       right: 8px;
+
       border-style: solid;
       border-width: 6px 6px 0 6px;
       border-color: $color-gray-primary transparent transparent transparent;
@@ -140,6 +158,7 @@ body {
     width: 20px;
     height: 20px;
     margin: 20px;
+
     -webkit-appearance: none;
     border-radius: 50%;
 
@@ -149,33 +168,35 @@ body {
     }
     &:checked::before {
       content: '';
-      width: 100%;
-      height: 100%;
       position: absolute;
       top: 0;
       left: 0;
-      border: 1px solid $color-gray-primary;
+
+      width: 100%;
+      height: 100%;
+
+      @include border-solid-1px($color-gray-primary);
       border-radius: 4px;
     }
   }
 
   input[type='radio']~label {
+    margin: 0;
     display: inline-flex;
     flex-direction: column;
     flex-grow: 1;
-    margin: 0;
     color: $color-black;
   }
 }
 
 .main__form__row--delivery {
-  display: flex;
-  align-items: center;
   position: relative;
-  border: 1px solid $color-gray-outline-button;
+
+  @include flex(flex, flex-start, center);
+
+  @include border-solid-1px($color-gray-outline-button);
   border-radius: 4px;
   
-
   .deliver--method {
     margin-bottom: .25rem;
     font-size: 14px;
@@ -216,29 +237,32 @@ body {
 }
 
 .main__form__row--button-group {
-  width: 100%;
-  height: calc(46px + 2rem);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: absolute;
   top: 100%;
-  border-top: 1px solid $color-gray-horizontal-line;
+
+  width: 100%;
+  height: calc(46px + 2rem);
+
+  @include flex(flex, space-between, center);
+
+  @include border-top-1px($color-gray-horizontal-line);
 }
 
 .button--step {
   height: 46px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+
+  @include flex(inline-flex, center, center);
   flex-grow: 1;
+
   border: none;
   border-radius: 8px;
+
   cursor: pointer;
 }
 
 .button--step--previous {
   justify-content: flex-start;
+
   background-color: $color-white;
   color: $color-black;
 
@@ -265,28 +289,26 @@ body {
 
 .main__chart {
   width: 100%;
-  border: 1px solid $color-gray-outline-button;
-  border-radius: 8px;
   padding: 1rem;
+
+  @include border-solid-1px($color-gray-outline-button);
+  border-radius: 8px;
 }
 
 .main__chart__item {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 1rem;
+  @include flex(flex, space-between, stretch);
 
   .item--image {
     width: 100px;
     height: 100px;
-    object-fit: cover;
     border-radius: 4px;
+    object-fit: cover;
   }
 
   .item--description {
-    display: flex;
+    @include flex(flex, space-between, flex-end);
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
   }
 
   .item--title {
@@ -295,17 +317,18 @@ body {
 
   .item--qty {
     width: 120px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex(flex, space-between, center);
 
     input {
       width: 48px;
+
       border: none;
       outline: none;
       text-align: center;
+
       &::placeholder {
         width: 100%;
+
         text-align: center;
         font-size: 14px;
         font-weight: 500;
@@ -315,19 +338,20 @@ body {
 
     input[type=number]::-webkit-outer-spin-button,
     input[type=number]::-webkit-inner-spin-button {
-      -webkit-appearance: none;
       margin: 0;
+      -webkit-appearance: none;
     }
 
     .item--button {
       width: 26px;
       height: 26px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
+
+      @include flex(inline-flex, center, center);
+
+      outline: none;
       border-radius: 50%;
       border: none;
-      outline: none;
+
       background-color: $color-gray-outline-button;
       font-size: 20px;
       cursor: pointer;
@@ -345,10 +369,10 @@ body {
 
 .main__chart__delivery,
 .main__chart__total-amount {
-  display: flex;
-  justify-content: space-between;
+  @include flex(flex, space-between, flex-start);
   padding: 1rem 0;
-  border-top: 1px solid $color-gray-outline-button;
+
+  @include border-top-1px($color-gray-outline-button);
 }
 
 .d-none {
@@ -357,13 +381,13 @@ body {
 
 @media screen and (min-width: 375px) {
   .main {
-    width: 80%;
     margin-top: 60px;
+    width: 80%;
   }
 
   .main__progress {
-    width: 50%;
     margin-left: 0;
+    width: 50%;
   }
 
   .step--description {
@@ -371,16 +395,13 @@ body {
   }
 
   .desktop-layout {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    @include flex(flex, space-between, flex-start);
 
     .main__form {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       min-height: 500px;
-      
+    
+      @include flex(flex, space-between, flex-start);
+      flex-direction: column;
       flex-basis: 50%;
     }
 
@@ -392,8 +413,8 @@ body {
       }
 
       .main__form__row__col--address {
-        flex-grow: 1;
         margin-left: 1rem;
+        flex-grow: 1;
       }
     }
 
@@ -404,15 +425,16 @@ body {
 
     .main__chart {
       position: relative;
-      top: -64px; // 32px + 2rem
+      top: -64px;
+
       flex-basis: 40%;
     }
   }
 
   .main__form__row--cardHolderName,
   .main__form__row--cardNumber {
-    width: 66.67%;
     margin-left: 0;
+    width: 66.67%;
   }
 
   .main__form__row--button-group {
@@ -426,5 +448,9 @@ body {
   .button--step.d-none {
     display: unset;
     visibility: hidden;
+  }
+
+  .footer__container__item--list {
+    cursor: pointer;
   }
 }
