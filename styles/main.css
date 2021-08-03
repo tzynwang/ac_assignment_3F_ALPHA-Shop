@@ -355,9 +355,9 @@ footer {
 
 @media screen and (min-width: 375px) {
   footer {
+    display: block;
     width: 100%;
     height: 284px;
-    display: block;
     background-color: #E5E5E5;
   }
   .footer__container {
@@ -370,6 +370,9 @@ footer {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
   }
   .footer__container__item {
     height: 100%;
@@ -1001,9 +1004,6 @@ body {
   .button--step.d-none {
     display: unset;
     visibility: hidden;
-  }
-  .footer__container__item--list {
-    cursor: pointer;
   }
 }
 /*# sourceMappingURL=main.css.map */
