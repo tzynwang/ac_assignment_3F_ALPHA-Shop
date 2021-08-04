@@ -867,6 +867,14 @@ body {
   color: var(--color-black);
 }
 
+.main__chart__title {
+  display: none;
+  margin-bottom: 1rem;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--color-gray-primary);
+}
+
 .main__chart__item {
   margin-bottom: 1rem;
   display: -webkit-box;
@@ -1080,6 +1088,9 @@ body {
     top: -64px;
     -ms-flex-preferred-size: 40%;
         flex-basis: 40%;
+  }
+  .desktop-layout .main__chart__title {
+    display: block;
   }
   .main__form__row--cardHolderName,
   .main__form__row--cardNumber {
