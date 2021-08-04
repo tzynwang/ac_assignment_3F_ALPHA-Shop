@@ -1,12 +1,31 @@
-$color-pink: #F67599;
-$color-gray-footer: #E5E5E5;
-$color-gray-primary: #2A2A2A; // most of the text, icon color
-$color-gray-primary-10: rgba(42, 42, 42, .1); // small device hr
-$color-gray-input-border: #4A4A4A;
-$color-gray-placeholder: #999999;
-$color-gray-secondary: #808080; // for footer anchor
-$color-gray-disable: #AFB1BD; // for step
-$color-gray-outline-button: #F0F0F5; // for chart button background, chart outline
-$color-gray-horizontal-line: #E6E6EB;
-$color-white: #fff;
-$color-black: #000;
+:root {
+  --color-pink: #F67599;
+  --color-gray-footer: #E5E5E5;
+  --color-gray-primary: #2A2A2A; // most of the text, icon color
+  --color-gray-primary-10: rgba(42, 42, 42, .1); // small device hr
+  --color-gray-input-border: #4A4A4A;
+  --color-gray-placeholder: #999999;
+  --color-gray-secondary: #808080; // for footer anchor
+  --color-gray-disable: #AFB1BD; // for step
+  --color-gray-outline-button: #F0F0F5; // for chart button background, chart outline
+  --color-gray-horizontal-line: #E6E6EB;
+  --color-chart: #fff;
+  --color-white: #fff;
+  --color-black: #000;
+}
+
+[data-theme="dark"] {
+  --color-pink: #F67599;
+  --color-gray-footer: #333333;
+  --color-gray-primary: #FFF; // most of the text, icon color
+  --color-gray-primary-10: rgba(42, 42, 42, .1); // small device hr
+  --color-gray-input-border: 5E5E5E;
+  --color-gray-placeholder: rgba(255, 255, 255, .3);
+  --color-gray-secondary: rgba(255, 255, 255, .6); // for footer anchor
+  --color-gray-disable: rgba(240, 240, 245, .4); // for step
+  --color-gray-outline-button: #808080; // for chart button background, chart outline
+  --color-gray-horizontal-line: rgba(255, 255, 255, .2);
+  --color-chart: #808080;
+  --color-white: #000;
+  --color-black: #fff;
+}
