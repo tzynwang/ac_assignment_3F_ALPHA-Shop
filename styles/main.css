@@ -169,7 +169,7 @@ table {
   --color-gray-footer: #333333;
   --color-gray-primary: #FFF;
   --color-gray-primary-10: rgba(42, 42, 42, .1);
-  --color-gray-input-border: 5E5E5E;
+  --color-gray-input-border: #5E5E5E;
   --color-gray-placeholder: rgba(255, 255, 255, .3);
   --color-gray-secondary: rgba(255, 255, 255, .6);
   --color-gray-disable: rgba(240, 240, 245, .4);
@@ -417,7 +417,7 @@ header {
   --color-gray-footer: #333333;
   --color-gray-primary: #FFF;
   --color-gray-primary-10: rgba(42, 42, 42, .1);
-  --color-gray-input-border: 5E5E5E;
+  --color-gray-input-border: #5E5E5E;
   --color-gray-placeholder: rgba(255, 255, 255, .3);
   --color-gray-secondary: rgba(255, 255, 255, .6);
   --color-gray-disable: rgba(240, 240, 245, .4);
@@ -612,7 +612,7 @@ body {
   color: #fff;
 }
 
-.main__progress__step.main__progress__step--uncompleted {
+.main__progress__step--uncompleted {
   border-color: var(--color-gray-disable);
   color: var(--color-gray-disable);
 }

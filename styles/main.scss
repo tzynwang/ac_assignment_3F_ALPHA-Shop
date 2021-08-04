@@ -90,11 +90,11 @@ body {
     background-color: var(--color-gray-primary);
     color: #fff;
   }
+}
 
-  &.main__progress__step--uncompleted {
-    border-color: var(--color-gray-disable);
-    color: var(--color-gray-disable);
-  }
+.main__progress__step--uncompleted {
+  border-color: var(--color-gray-disable);
+  color: var(--color-gray-disable);
 }
 
 .main__form__section {

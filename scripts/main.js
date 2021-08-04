@@ -49,6 +49,8 @@ elementObject.previousStepButton.addEventListener('click', () => {
     document.querySelector('.main__progress__step.step--2').classList.remove('main__progress__step--completed')
     document.querySelector('.main__form__section.delivery-option').classList.remove('d-none')
     document.querySelector('.main__form__section.billing-info').classList.add('d-none')
+    document.querySelector('.main__progress__step.step--3').classList.add('main__progress__step--uncompleted')
+    document.querySelector('.main__progress__step.step--3').nextElementSibling.classList.add('main__progress__step--uncompleted')
     elementObject.nextStepButton.classList.remove('button--step--next--completed')
     elementObject.nextStepButton.innerHTML = '下一步'
     config.step = 2
