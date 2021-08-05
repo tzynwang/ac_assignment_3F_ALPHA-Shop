@@ -38,7 +38,7 @@
             </a>
           </li>
           <li class="nav__list-container__item">
-            <label href="#" for="darkModeSwitch">
+            <label href="#" for="darkModeSwitch" class="dark-mode-switch-label">
               <input type="checkbox" id="darkModeSwitch" v-model="darkMode">
               <img class="nav__icon" :src="navModeIcon">
             </label>
@@ -51,12 +51,12 @@
       </div>
     </header>
 
-    <main>
+    <main class="container">
       <form action="/">
-        <h1 class="container title">結帳</h1>
+        <h1 class="title">結帳</h1>
 
         <!-- progress bar -->
-        <div class="container progress-bar">
+        <div class="progress-bar">
           <div :class="['step-item', { 'active': index === currentStep }, { 'complete': index < currentStep }]"
             v-for="(step, index) in steps">
             <div class="icon">{{stepNumber(index)}}</div>
@@ -67,22 +67,95 @@
         </div>
 
         <!-- address -->
-        <div>
-          <h2 class="container title">寄送地址</h2>
+        <div class="form-section address-into">
+          <h2 class="title">寄送地址</h2>
+          <div class="row-group title-and-name">
+            <div class="form-row title">
+              <label for="title">稱謂</label>
+              <div class="select-wrapper">
+                <select name="title" id="title" required>
+                  <option value="mr">先生</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row name">
+              <label for="name">姓名</label>
+              <input type="text" name="name" id="name" placeholder="請輸入姓名">
+            </div>
+          </div>
+          <div class="row-group">
+            <div class="form-row">
+              <label for="tel">電話</label>
+              <input type="tel" name="tel" id="tel" placeholder="請輸入行動電話">
+            </div>
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="請輸入電子郵件">
+            </div>
+          </div>
+          <div class="row-group">
+            <div class="form-row">
+              <label for="city">縣市</label>
+              <div class="select-wrapper">
+                <select name="city" id="city" required>
+                  <option value="" selected>請選擇縣市</option>
+                  <option value="dummyValue">縣市</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="address">地址</label>
+              <input type="text" name="address" id="address" placeholder="請輸入地址">
+            </div>
+          </div>
         </div>
         <!-- delivery method -->
-        <div>
-          <h2 class="container title">運送方式</h2>
+        <div class="form-section delivery-method">
+          <h2 class="title">運送方式</h2>
+          <div class="form-row">
+            <input type="radio" name="delivery" id="deliveryStandard" value="deliveryStandard">
+            <label for="deliveryStandard">
+              <div class="deliver-method">標準運送</div>
+              <div class="deliver-time">約 3~7 個工作天</div>
+            </label>
+            <span class="price">免費</span>
+          </div>
+          <div class="form-row">
+            <input type="radio" name="delivery" id="deliveryDhl" value="deliveryDhl">
+            <label for="deliveryDhl">
+              <div class="deliver-method">DHL貨運</div>
+              <div class="deliver-time">48 小時內送達</div>
+            </label>
+            <span class="price">500</span>
+          </div>
         </div>
         <!-- billing -->
-        <div>
-          <h2 class="container title">付款資訊</h2>
+        <div class="form-section billing-info">
+          <h2 class="title">付款資訊</h2>
+          <div class="form-row">
+            <label for="cardHolderName">持卡人姓名</label>
+            <input type="number" name="cardHolderName" id="cardHolderName" placeholder="John Doe">
+          </div>
+          <div class="form-row">
+            <label for="cardNumber">卡號</label>
+            <input type="number" name="cardNumber" id="cardNumber" placeholder="1111 2222 3333 4444">
+          </div>
+          <div class="row-group card-expDate-and-cvc">
+            <div class="form-row">
+              <label for="cardExpiredDate">有效期限</label>
+              <input type="text" name="cardExpiredDate" id="cardExpiredDate" placeholder="MM/YY">
+            </div>
+            <div class="form-row">
+              <label for="cardCvc">CVC / CCV</label>
+              <input type="text" name="cardCvc" id="cardCvc" placeholder="123">
+            </div>
+          </div>
         </div>
 
         <!-- chart -->
         <div>
           <!-- title -->
-          <h2 class="container title"></h2>
+          <h2 class="title"></h2>
           <!-- chart item -->
           <div v-for="item in chartItems">
             <img :src="item.image" alt="">
