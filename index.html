@@ -5,229 +5,110 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👕</text></svg>">
   <link rel="stylesheet" href="./styles/main.css">
-  <title>ALPHA Shop</title>
+  <title>ALPHA Shop (Vue)</title>
 </head>
 
 <body>
-  <header>
-    <label for="header__menu" class="header__menu--label"></label>
-    <input type="checkbox" id="header__menu">
-    <nav class="header__nav">
-      <ul class="header__nav__categories">
-        <li class="header__nav__categories--item">男款</li>
-        <li class="header__nav__categories--item">女款</li>
-        <li class="header__nav__categories--item">最新消息</li>
-        <li class="header__nav__categories--item">聯絡我們</li>
-        <li class="header__nav__categories--item">客製商品</li>
-      </ul>
-      <a href="#" class="header__nav__brand">
-        <img src="./images/logo.svg" alt="brand logo">
-      </a>
-      <div class="header__nav__actions">
-        <span class="icon icon--search"></span>
-        <span class="icon icon--chart"></span>
-        <span class="icon icon--mode-switch">
-          <input type="checkbox" id="mode-switch">
-          <label for="mode-switch"></label>
-        </span>
-      </div>
-    </nav>
-  </header>
-
-  <main class="main">
-    <h1 class="main__title">結帳</h1>
-
-    <section class="main__progress">
-      <span class="main__progress__step step--1"></span>
-      <span class="step--description">寄送地址</span>
-      <span class="main__progress__bar"></span>
-      <span class="main__progress__step step--2"></span>
-      <span class="step--description">運送方式</span>
-      <span class="main__progress__bar main__progress__bar--uncompleted"></span>
-      <span class="main__progress__step main__progress__step--uncompleted step--3"></span>
-      <span class="step--description main__progress__step--uncompleted">付款資訊</span>
-    </section>
-
-    <div class="desktop-layout">
-      <form class="main__form" action="/">
-        <!-- address -->
-        <div class="main__form__section address">
-          <h2 class="main__form__title">寄送地址</h2>
-          <div class="main__form__row main__form__row--title">
-            <div class="main__form__row__col--title">
-              <label for="title">稱謂</label>
-              <div class="select--wrapper">
-                <select name="title" id="title" required>
-                  <option value="mr">先生</option>
-                </select>
-              </div>
-            </div>
-            <div class="main__form__row__col--name">
-              <label for="name">姓名</label>
-              <input type="text" name="name" id="name" placeholder="請輸入姓名">
-            </div>
-          </div>
-          <div class="main__form__row main__form__row--tel">
-            <label for="tel">電話</label>
-            <input type="tel" name="tel" id="tel" placeholder="請輸入行動電話">
-          </div>
-          <div class="main__form__row main__form__row--email">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="請輸入電子郵件">
-          </div>
-          <div class="main__form__row main__form__row--address">
-            <div class="main__form__row__col--city">
-              <label for="city">縣市</label>
-              <div class="select--wrapper">
-                <select name="city" id="city" required>
-                  <option value="" selected>請選擇縣市</option>
-                  <option value="dummyValue">縣市</option>
-                </select>
-              </div>
-            </div>
-            <div class="main__form__row__col--address">
-              <label for="address">地址</label>
-              <input type="text" name="address" id="address" placeholder="請輸入地址">
-            </div>
-          </div>
-        </div>
-
-        <!-- delivery option -->
-        <div class="main__form__section delivery-option d-none">
-          <h2 class="main__form__title">運送方式</h2>
-          <div class="main__form__row main__form__row--delivery">
-            <input type="radio" name="delivery" id="deliveryStandard" value="deliveryStandard" checked>
-            <label for="deliveryStandard">
-              <span class="deliver--method">標準運送</span>
-              <span class="deliver--time">約 3~7 個工作天</span>
-            </label>
-            <span class="price price--free">免費</span>
-          </div>
-          <div class="main__form__row main__form__row--delivery">
-            <input type="radio" name="delivery" id="deliveryDhl" value="deliveryDhl">
-            <label for="deliveryDhl">
-              <span class="deliver--method">DHL貨運</span>
-              <span class="deliver--time">48 小時內送達</span>
-            </label>
-            <span class="price">500</span>
-          </div>
-        </div>
-
-        <!-- billing info -->
-        <div class="main__form__section billing-info d-none">
-          <h2 class="main__form__title">付款資訊</h2>
-          <div class="main__form__row main__form__row--cardHolderName">
-            <label for="cardHolderName">持卡人姓名</label>
-            <input type="number" name="cardHolderName" id="cardHolderName" placeholder="John Doe">
-          </div>
-          <div class="main__form__row main__form__row--cardNumber">
-            <label for="cardNumber">卡號</label>
-            <input type="number" name="cardNumber" id="cardNumber" placeholder="1111 2222 3333 4444">
-          </div>
-          <div class="main__form__row main__form__row--cardSecurity">
-            <div class="main__form__row__col main__form__row__col--cardExpiredDate">
-              <label for="cardExpiredDate">有效期限</label>
-              <input type="text" name="cardExpiredDate" id="cardExpiredDate" placeholder="MM/YY">
-            </div>
-            <div class="main__form__row__col main__form__row__col--cardCvc">
-              <label for="cardCvc">CVC / CCV</label>
-              <input type="text" name="cardCvc" id="cardCvc" placeholder="123">
-            </div>
-          </div>
-        </div>
-
-        <!-- buttons -->
-        <div class="main__form__row main__form__row--button-group">
-          <button class="button--step button--step--previous d-none" id="previous" type="button">上一步</button>
-          <button class="button--step button--step--next" id="next" type="submit">下一步</button>
-        </div>
-      </form>
-
-      <!-- chart -->
-      <section class="main__chart">
-        <h2 class="main__chart__title">購物籃</h2>
-        <div class="main__chart__item">
-          <img class="item--image" src="./images/chart-img-1.png" alt="product photo">
-          <div class="item--description">
-            <span class="item--title">破壞補丁修身牛仔褲</span>
-            <div class="item--qty">
-              <button class="item--button remove">-</button>
-              <input type="number" class="item--qty--label" placeholder="1" value="1" readonly>
-              <button class="item--button add">+</button>
-            </div>
-            <span class="price">3999</span>
-          </div>
-        </div>
-        <div class="main__chart__item">
-          <img class="item--image" src="./images/chart-img-2.png" alt="product photo">
-          <div class="item--description">
-            <span class="item--title">刷色直筒牛仔褲</span>
-            <div class="item--qty">
-              <button class="item--button remove">-</button>
-              <input type="number" class="item--qty--label" placeholder="1" value="1" readonly>
-              <button class="item--button add">+</button>
-            </div>
-            <span class="price">1299</span>
-          </div>
-        </div>
-        <div class="main__chart__delivery">
-          <span>運費</span>
-          <span class="price price--free">免費</span>
-        </div>
-        <div class="main__chart__total-amount">
-          <span>小計</span>
-          <span class="price">5298</span>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <footer>
-    <div class="footer__container">
-      <div class="footer__container__item footer__container__item--brand">
-        <img src="./images/logo.svg" alt="brand logo">
-      </div>
-      <div class="footer__container__item">
-        <p class="footer__container__item--topic">客戶服務</p>
-        <ul class="footer__container__item--list">
-          <li>運送說明</li>
-          <li>退換貨資訊</li>
-          <li>付款資訊</li>
-          <li>FAQ</li>
-        </ul>
-      </div>
-      <div class="footer__container__item">
-        <p class="footer__container__item--topic">關於我們</p>
-        <ul class="footer__container__item--list">
-          <li>品牌故事</li>
-          <li>媒體連繫</li>
-          <li>Press kit</li>
-        </ul>
-      </div>
-      <div class="footer__container__item">
-        <p class="footer__container__item--topic">資訊</p>
-        <ul class="footer__container__item--list">
-          <li>隱私權政策</li>
-          <li>Cookie</li>
-          <li>GDPR</li>
-        </ul>
-      </div>
-      <div class="footer__container__item">
-        <p class="footer__container__item--topic">追蹤 ALPHA Shop</p>
-        <ul class="footer__container__item--list">
-          <li>+886 02123-45678</li>
-          <li>
-            <span class="icon icon--fb"></span>
-            <span class="icon icon--ig"></span>
-            <span class="icon icon--tel"></span>
+  <div id="app">
+    <header>
+      <!-- nav toggle -->
+      <label for="navListToggle">
+        <img :src="navMenuIcon" alt="">
+      </label>
+      <input type="checkbox" id="navListToggle" v-model="darkMode">
+      <!-- nav list -->
+      <nav class="header__nav">
+        <!-- category -->
+        <ul class="nav__list-container">
+          <li v-for="category in categories">
+            <a href="#">{{category}}</a>
           </li>
         </ul>
+        <!-- operation -->
+        <ul class="nav__list-container">
+          <li>
+            <a href="#">
+              <img class="nav__icon" :src="navSearchIcon" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img :src="navChartIcon" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img class="nav__icon" :src="navModeIcon" alt="">
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- logo -->
+      <div class="header__logo">
+        <img class="header__logo--image" :src="navLogoSrc" alt="nav bar logo">
       </div>
-    </div>
-  </footer>
+    </header>
+
+    <main>
+      <form action="">
+        <h1></h1>
+
+        <!-- progress bar -->
+        <div></div>
+
+        <!-- address -->
+        <div>
+          <h2></h2>
+        </div>
+        <!-- delivery method -->
+        <div>
+          <h2></h2>
+        </div>
+        <!-- billing -->
+        <div>
+          <h2></h2>
+        </div>
+
+        <!-- chart -->
+        <div>
+          <!-- title -->
+          <h2></h2>
+          <!-- chart item -->
+          <div v-for="item in chartItems">
+            <img :src="item.image" alt="">
+            <div>
+              <!-- item & qty -->
+              <div>
+                <!-- item title -->
+                <div>{{item.title}}</div>
+                <!-- qty -->
+                <div>
+                  <button>-</button>
+                  <span>{{item.qty}}</span>
+                  <button>+</button>
+                </div>
+              </div>
+              <!-- price -->
+              <div>{{item.price}}</div>
+            </div>
+          </div>
+          <!-- delivery cost -->
+          <div></div>
+          <!-- sum -->
+          <div></div>
+        </div>
+
+        <!-- button groups -->
+        <div>
+          <button>上一步</button>
+          <button>下一步</button>
+        </div>
+      </form>
+    </main>
+
+    <footer></footer>
+  </div>
 
   <script src="./scripts/main.js"></script>
 </body>
