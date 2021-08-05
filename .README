@@ -1,2 +1,3 @@
 # 時間記錄
-- 第一小時：環境建置、HTML架構、配置素材、CSS reset
+- 第一小時：環境建置、HTML架構、配置素材、CSS reset、vue dark mode基本邏輯設定
+- 第二小時：header大小版、progress bar大小版（皆含dark mode）

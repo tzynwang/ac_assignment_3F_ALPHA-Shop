@@ -13881,6 +13881,7 @@ const app = new Vue({
   el: '#app',
   data: {
     steps: [],
+    currentStep: 0,
     categories: [],
     chartItems: [],
     navLogoSrc: './images/logo.svg',
@@ -13898,11 +13899,18 @@ const app = new Vue({
     // chart items
     const chartItems = await this.fetchData('../../data/chartItems.json')
     this.chartItems = [...chartItems.chartItems]
+
+    // steps
+    const steps = await this.fetchData('../../data/steps.json')
+    this.steps = [...steps.steps]
   },
   methods: {
     async fetchData (url) {
       const response = await axios.get(url)
       return response.data
+    },
+    stepNumber(index) {
+      return index < this.currentStep ? '✓' : index + 1
     }
   },
   watch: {

@@ -11,36 +11,37 @@
 
 <body>
   <div id="app">
-    <header>
+    <header class="container">
       <!-- nav toggle -->
-      <label for="navListToggle">
-        <img :src="navMenuIcon" alt="">
+      <label for="navListToggle" class="nav-toggle-label">
+        <img :src="navMenuIcon" class="nav-toggle-label-icon">
       </label>
-      <input type="checkbox" id="navListToggle" v-model="darkMode">
+      <input type="checkbox" id="navListToggle" class="nav-toggle-btn">
       <!-- nav list -->
       <nav class="header__nav">
         <!-- category -->
-        <ul class="nav__list-container">
-          <li v-for="category in categories">
+        <ul class="nav__list-container category">
+          <li class="nav__list-container__item" v-for="category in categories">
             <a href="#">{{category}}</a>
           </li>
         </ul>
         <!-- operation -->
-        <ul class="nav__list-container">
-          <li>
+        <ul class="nav__list-container operation">
+          <li class="nav__list-container__item">
             <a href="#">
               <img class="nav__icon" :src="navSearchIcon" alt="">
             </a>
           </li>
-          <li>
+          <li class="nav__list-container__item">
             <a href="#">
               <img :src="navChartIcon" alt="">
             </a>
           </li>
-          <li>
-            <a href="#">
-              <img class="nav__icon" :src="navModeIcon" alt="">
-            </a>
+          <li class="nav__list-container__item">
+            <label href="#" for="darkModeSwitch">
+              <input type="checkbox" id="darkModeSwitch" v-model="darkMode">
+              <img class="nav__icon" :src="navModeIcon">
+            </label>
           </li>
         </ul>
       </nav>
@@ -51,29 +52,37 @@
     </header>
 
     <main>
-      <form action="">
-        <h1></h1>
+      <form action="/">
+        <h1 class="container title">結帳</h1>
 
         <!-- progress bar -->
-        <div></div>
+        <div class="container progress-bar">
+          <div :class="['step-item', { 'active': index === currentStep }, { 'complete': index < currentStep }]"
+            v-for="(step, index) in steps">
+            <div class="icon">{{stepNumber(index)}}</div>
+            <div class="content">
+              <span class="content-text">{{step}}</span>
+            </div>
+          </div>
+        </div>
 
         <!-- address -->
         <div>
-          <h2></h2>
+          <h2 class="container title">寄送地址</h2>
         </div>
         <!-- delivery method -->
         <div>
-          <h2></h2>
+          <h2 class="container title">運送方式</h2>
         </div>
         <!-- billing -->
         <div>
-          <h2></h2>
+          <h2 class="container title">付款資訊</h2>
         </div>
 
         <!-- chart -->
         <div>
           <!-- title -->
-          <h2></h2>
+          <h2 class="container title"></h2>
           <!-- chart item -->
           <div v-for="item in chartItems">
             <img :src="item.image" alt="">
