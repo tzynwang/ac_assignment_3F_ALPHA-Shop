@@ -115,20 +115,22 @@
             <div :class="['form-section', 'delivery-method', {'d-none': currentStep !== 1}]">
               <h2 class="title">運送方式</h2>
               <div class="form-row">
-                <input type="radio" name="delivery" id="deliveryStandard" value="deliveryStandard">
+                <input type="radio" name="delivery" id="deliveryStandard" :value="deliveryFee.standard"
+                  v-model="currentDeliveryFee" @change="reCalcOrderSum">
                 <label for="deliveryStandard">
                   <div class="deliver-method">標準運送</div>
                   <div class="deliver-time">約 3~7 個工作天</div>
                 </label>
-                <span class="price">免費</span>
+                <span class="price">{{deliveryFee.standard | dollarSign}}</span>
               </div>
               <div class="form-row">
-                <input type="radio" name="delivery" id="deliveryDhl" value="deliveryDhl">
+                <input type="radio" name="delivery" id="deliveryDhl" :value="deliveryFee.dhl"
+                  v-model="currentDeliveryFee" @change="reCalcOrderSum">
                 <label for="deliveryDhl">
                   <div class="deliver-method">DHL貨運</div>
                   <div class="deliver-time">48 小時內送達</div>
                 </label>
-                <span class="price">500</span>
+                <span class="price">{{deliveryFee.dhl | dollarSign}}</span>
               </div>
             </div>
             <!-- billing -->
@@ -159,33 +161,33 @@
             <!-- title -->
             <h2 class="title chart-title">購物籃</h2>
             <!-- chart item -->
-            <div class="chart-item" v-for="item in chartItems">
-              <img class="chart-image" :src="item.image" alt="product image">
+            <div :class="['chart-item', { 'd-none': item.item.qty === 0 }]" v-for="item in chartItems" :key="item.id">
+              <img class="chart-image" :src="item.item.image" alt="product image">
               <div class="chart-panel">
                 <!-- item & qty -->
                 <div>
                   <!-- item title -->
-                  <div class="chart-item-title">{{item.title}}</div>
+                  <div class="chart-item-title">{{item.item.title}}</div>
                   <!-- qty -->
                   <div>
-                    <button class="qty-btn">-</button>
-                    <span class="chart-item-qty">{{item.qty}}</span>
-                    <button class="qty-btn">+</button>
+                    <button class="qty-btn" @click="minusQty(item.id)">-</button>
+                    <span class="chart-item-qty">{{item.item.qty}}</span>
+                    <button class="qty-btn" @click="addQty(item.id)">+</button>
                   </div>
                 </div>
                 <!-- price -->
-                <div class="chart-item-price">{{item.price}}</div>
+                <div class="chart-item-price">{{item.item.price | dollarSign}}</div>
               </div>
             </div>
             <!-- delivery cost -->
             <div class="delivery-cost">
               <span>運費</span>
-              <span>免費</span>
+              <span>{{currentDeliveryFee | dollarSign}}</span>
             </div>
             <!-- sum -->
             <div class="order-sum">
               <span>小計</span>
-              <span>5298</span>
+              <span>{{orderSum | dollarSign}}</span>
             </div>
           </div>
         </div>
@@ -198,7 +200,45 @@
       </form>
     </main>
 
-    <footer></footer>
+    <footer class="container">
+      <div class="footer-section logo">
+        <img :src="navLogoSrc" alt="logo">
+      </div>
+      <div class="footer-section">
+        <div class="footer-title">客戶服務</div>
+        <a href="">運送說明</a>
+        <a href="">退換貨相關</a>
+        <a href="">付款資訊</a>
+        <a href="">FAQ</a>
+      </div>
+      <div class="footer-section">
+        <div class="footer-title">關於我們</div>
+        <a href="">品牌故事</a>
+        <a href="">媒體聯繫</a>
+        <a href="">Press kit</a>
+      </div>
+      <div class="footer-section">
+        <div class="footer-title">資訊</div>
+        <a href="">隱私權政策</a>
+        <a href="">Cookie</a>
+        <a href="">GDPR</a>
+      </div>
+      <div class="footer-section">
+        <div class="footer-title">追蹤 ALPHA Shop</div>
+        <div class="footer-tel">+886 02123-45678</div>
+        <div class="social-media">
+          <a href="">
+            <img :src="footerFbIcon" alt="facebook icon">
+          </a>
+          <a href="">
+            <img :src="footerIGIcon" alt="instagram icon">
+          </a>
+          <a href="">
+            <img :src="footerTelIcon" alt="make-a-call icon">
+          </a>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <script src="./scripts/main.js"></script>

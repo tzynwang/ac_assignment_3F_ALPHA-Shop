@@ -44,6 +44,8 @@ ul, li {
   --chart-qty-btn: #F0F0F5;
   --chart-qty-btn-text: #333;
   --btn-group-border: #E6E6EB;
+  --footer-bg: #F6F7F8;
+  --footer-text: #808080;
 }
 
 [data-theme="dark"] {
@@ -65,6 +67,8 @@ ul, li {
   --chart-qty-btn: #808080;
   --chart-qty-btn-text: #000;
   --btn-group-border: rgba(255, 255, 255, .2);
+  --footer-bg: #333333;
+  --footer-text: rgba(255, 255, 255, .6);
 }
 
 .container {
@@ -106,7 +110,7 @@ ul, li {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 html, body {
@@ -581,6 +585,7 @@ main {
   font-weight: bold;
   color: var(--chart-qty-btn-text);
   background-color: var(--chart-qty-btn);
+  cursor: pointer;
 }
 
 .chart-item-price {
@@ -624,7 +629,14 @@ main {
   margin-left: .5rem;
 }
 
+footer {
+  display: none;
+}
+
 @media screen and (min-width: 375px) {
+  .container {
+    padding: 0 10%;
+  }
   header {
     height: 60px;
   }
@@ -740,6 +752,51 @@ main {
   .btn-group .btn.d-none {
     display: inline-block;
     visibility: hidden;
+  }
+  footer {
+    height: 284px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+  }
+  .footer-title {
+    margin-bottom: 1rem;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--dark);
+  }
+  .footer-section a {
+    display: block;
+    margin-bottom: .25rem;
+  }
+  .footer-section.logo {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+  }
+  .footer-title {
+    margin: 2rem 0 1rem;
+  }
+  .footer-tel {
+    margin-bottom: .5rem;
+  }
+  .social-media a {
+    display: inline-block;
+  }
+  .social-media a + a {
+    margin-left: 16px;
   }
 }
 /*# sourceMappingURL=main.css.map */
