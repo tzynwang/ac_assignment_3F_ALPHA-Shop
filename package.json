@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watchify": "watchify scripts/src/main.js -o scripts/main.js"
+    "watchify": "watchify scripts/src/main.js -o scripts/bundleMain.js"
   },
   "repository": {
     "type": "git",

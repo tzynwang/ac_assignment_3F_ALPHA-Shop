@@ -24,18 +24,17 @@ const app = new Vue({
   },
   async created () {
     // categories
-    const categories = await this.fetchData('../../data/categories.json')
+    const categories = await this.fetchData('./ac_assignment_3F_ALPHA-Shop/data/categories.json') // ../../data/categories.json
     this.categories = [...categories.categories]
 
     // chart items
-    const chartItems = await this.fetchData('../../data/chartItems.json')
-    // this.chartItems = [...chartItems.chartItems]
+    const chartItems = await this.fetchData('./ac_assignment_3F_ALPHA-Shop/data/chartItems.json') // ../../data/chartItems.json
     chartItems.chartItems.forEach(item => {
       this.chartItems.push({ item, id: uuid() })
     })
 
     // steps
-    const steps = await this.fetchData('../../data/steps.json')
+    const steps = await this.fetchData('./ac_assignment_3F_ALPHA-Shop/data/steps.json') // ../../data/steps.json
     this.steps = [...steps.steps]
   },
   methods: {
