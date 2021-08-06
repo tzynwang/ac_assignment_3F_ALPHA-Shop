@@ -16633,6 +16633,7 @@ const { uuid } = require('uuidv4')
 const app = new Vue({
   el: '#app',
   data: {
+    blurTest: '',
     steps: ['寄送地址', '運送方式', '付款資訊'],
     currentStep: 0,
     categories: ['男款', '女款', '最新消息', '客製商品', '聯絡我們'],
@@ -16701,7 +16702,19 @@ const app = new Vue({
     },
     closeInput () {
       document.querySelector('.search-input').value = ''
-      document.querySelector('.search-input').blur()
+      setTimeout(() => {
+        document.querySelector('.search-input').blur()
+      }, 1000)
+    },
+    closeNavList (event) {
+      if (event.target.checked) {
+        document.querySelector('main').addEventListener('click', () => {
+          event.target.checked = false
+        })
+      }
+    },
+    blurEventTest () {
+      console.log('blur event fire!')
     }
   },
   computed: {

@@ -17,7 +17,7 @@
       <label for="navListToggle" class="nav-toggle-label">
         <img :src="navMenuIcon" class="nav-toggle-label-icon">
       </label>
-      <input type="checkbox" id="navListToggle" class="nav-toggle-btn">
+      <input type="checkbox" id="navListToggle" class="nav-toggle-btn" @change="closeNavList($event)" @blur="blurEventTest">
       <!-- nav list -->
       <nav class="header__nav">
         <!-- category -->
