@@ -1,0 +1,47 @@
+:root {
+  --primary-pink: #F67599;
+
+  --white: #fff;
+  --dark: #2A2A2A;
+  --dark-10: rgba(42, 42, 42, .1);
+  --progress-icon-gray: #AFB1BD;
+  --progress-line-gray: #F0F0F5;
+  --form-label-text: #808080;
+  --form-border: #4A4A4A;
+  --select-triangle: #2A2A2A;
+  --radio-border: #F0F0F5;
+  --radio-border-checked: #2A2A2A;
+  --radio-btn-bg: #fff;
+  --radio-btn-border: #222;
+  --radio-btn-checked: #2A2A2A;
+  --chart-border: #F0F0F5;
+  --chart-bg: #fff;
+  --chart-qty-btn: #F0F0F5;
+  --chart-qty-btn-text: #333;
+  --btn-group-border: #E6E6EB;
+  --footer-bg: #F6F7F8;
+  --footer-text: #808080;
+}
+
+[data-theme="dark"] {
+  --white: #121212;
+  --dark: #fff;
+  --dark-10: rgba(255, 255, 255, .1);
+  --progress-icon-gray: #C4C4C4;
+  --progress-line-tray: #D8D8D8;
+  --form-label-text: rgba(255, 255, 255, .4);
+  --form-border: #5E5E5E;
+  --select-triangle: #5E5E5E;
+  --radio-border: #5E5E5E;
+  --radio-border-checked: #fff;
+  --radio-btn-bg: #333;
+  --radio-btn-border: #333;
+  --radio-btn-checked: #333;
+  --chart-border: rgba(255, 255, 255, .2);
+  --chart-bg: #383838;
+  --chart-qty-btn: #808080;
+  --chart-qty-btn-text: #000;
+  --btn-group-border: rgba(255, 255, 255, .2);
+  --footer-bg: #333;
+  --footer-text: rgba(255, 255, 255, .6);
+}
