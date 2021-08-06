@@ -16634,7 +16634,7 @@ const app = new Vue({
   el: '#app',
   data: {
     steps: [],
-    currentStep: 1,
+    currentStep: 0,
     categories: [],
     chartItems: [],
     currentDeliveryFee: 0,
@@ -16673,11 +16673,6 @@ const app = new Vue({
     stepNumber (index) {
       return index < this.currentStep ? '✓' : index + 1
     },
-    calculateOrderSum () {
-      this.chartItems.forEach(item => {
-        this.orderSum += (item.item.price * item.item.qty)
-      })
-    },
     addQty (id) {
       this.chartItems.forEach(item => {
         if (item.id === id) {
@@ -16698,6 +16693,22 @@ const app = new Vue({
         this.orderSum += (item.item.price * item.item.qty)
       })
       this.orderSum += this.currentDeliveryFee
+    },
+    stepCount (input) {
+      this.currentStep = (input < 0 && this.currentStep > 0) ? this.currentStep -= 1 : this.currentStep += 1
+      window.scrollTo(0, 0)
+    },
+    autoFocus () {
+      document.querySelector('.search-input').focus()
+    },
+    closeInput () {
+      document.querySelector('.search-input').value = ''
+      document.querySelector('.search-input').blur()
+    }
+  },
+  computed: {
+    nextBtnText () {
+      return this.currentStep === 2 ? '確認下單' : '下一步 →'
     }
   },
   filters: {
@@ -16736,15 +16747,16 @@ const app = new Vue({
         this.chartItems.forEach(item => {
           this.orderSum += (item.item.price * item.item.qty)
         })
+        this.orderSum += this.currentDeliveryFee
       }
+    },
+    currentDeliveryFee: function () {
+      this.orderSum = 0
+      this.chartItems.forEach(item => {
+        this.orderSum += (item.item.price * item.item.qty)
+      })
+      this.orderSum += this.currentDeliveryFee
     }
-  },
-  currentDeliveryFee: function () {
-    this.orderSum = 0
-    this.chartItems.forEach(item => {
-      this.orderSum += (item.item.price * item.item.qty)
-    })
-    this.orderSum += this.currentDeliveryFee
   }
 })
 

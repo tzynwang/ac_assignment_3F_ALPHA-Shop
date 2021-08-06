@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="./images/favicon.svg">
   <link rel="stylesheet" href="./styles/main.css">
   <title>ALPHA Shop (Vue)</title>
 </head>
@@ -27,9 +28,12 @@
         </ul>
         <!-- operation -->
         <ul class="nav__list-container operation">
-          <li class="nav__list-container__item">
+          <li class="nav__list-container__item search-container">
             <a href="#">
-              <img class="nav__icon" :src="navSearchIcon" alt="">
+              <label class="search-input-label" for="searchInput" @mouseover="autoFocus" @mouseleave="closeInput">
+                <img class="nav__icon" :src="navSearchIcon" alt="">
+              </label>
+              <input class="search-input" type="text" id="searchInput">
             </a>
           </li>
           <li class="nav__list-container__item">
@@ -76,7 +80,9 @@
                   <label for="title">稱謂</label>
                   <div class="select-wrapper">
                     <select name="title" id="title" required>
-                      <option value="mr">先生</option>
+                      <option value="m">先生</option>
+                      <option value="f">小姐</option>
+                      <option value="na">不透露</option>
                     </select>
                   </div>
                 </div>
@@ -170,9 +176,9 @@
                   <div class="chart-item-title">{{item.item.title}}</div>
                   <!-- qty -->
                   <div>
-                    <button class="qty-btn" @click="minusQty(item.id)">-</button>
+                    <button class="qty-btn" @click.prevent="minusQty(item.id)">-</button>
                     <span class="chart-item-qty">{{item.item.qty}}</span>
-                    <button class="qty-btn" @click="addQty(item.id)">+</button>
+                    <button class="qty-btn" @click.prevent="addQty(item.id)">+</button>
                   </div>
                 </div>
                 <!-- price -->
@@ -194,8 +200,9 @@
         <!-- buttons group -->
         <div class="btn-group">
           <button
-            :class="['btn', 'btn-primary-outline', 't-align-left', 'previous', { 'd-none': currentStep === 0 }]">上一步</button>
-          <button class="btn btn-primary next">下一步</button>
+            :class="['btn', 'btn-primary-outline', 't-align-left', { 'd-none': currentStep === 0 }]"
+            @click.prevent="stepCount(-1)">← 上一步</button>
+          <button class="btn btn-primary" @click.prevent="stepCount(1)">{{nextBtnText}}</button>
         </div>
       </form>
     </main>
