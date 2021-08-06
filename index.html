@@ -201,8 +201,8 @@
         <div class="btn-group">
           <button
             :class="['btn', 'btn-primary-outline', 't-align-left', { 'd-none': currentStep === 0 }]"
-            @click.prevent="stepCount(-1)">← 上一步</button>
-          <button class="btn btn-primary" @click.prevent="stepCount(1)">{{nextBtnText}}</button>
+            @click.prevent="stepCount(-1); scrollTop();">← 上一步</button>
+          <button class="btn btn-primary" @click.prevent="stepCount(1); scrollTop();">{{nextBtnText}}</button>
         </div>
       </form>
     </main>

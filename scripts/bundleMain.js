@@ -16633,9 +16633,9 @@ const { uuid } = require('uuidv4')
 const app = new Vue({
   el: '#app',
   data: {
-    steps: [],
+    steps: ['寄送地址', '運送方式', '付款資訊'],
     currentStep: 0,
-    categories: [],
+    categories: ['男款', '女款', '最新消息', '客製商品', '聯絡我們'],
     chartItems: [],
     currentDeliveryFee: 0,
     deliveryFee: { standard: 0, dhl: 500 },
@@ -16651,19 +16651,11 @@ const app = new Vue({
     darkMode: false
   },
   async created () {
-    // categories
-    const categories = await this.fetchData('./data/categories.json') // ../../data/categories.json
-    this.categories = [...categories.categories]
-
     // chart items
-    const chartItems = await this.fetchData('./data/chartItems.json') // ../../data/chartItems.json
+    const chartItems = await this.fetchData('./data/chartItems.json')
     chartItems.chartItems.forEach(item => {
       this.chartItems.push({ item, id: uuid() })
     })
-
-    // steps
-    const steps = await this.fetchData('./data/steps.json') // ../../data/steps.json
-    this.steps = [...steps.steps]
   },
   methods: {
     async fetchData (url) {
@@ -16695,7 +16687,13 @@ const app = new Vue({
       this.orderSum += this.currentDeliveryFee
     },
     stepCount (input) {
-      this.currentStep = (input < 0 && this.currentStep > 0) ? this.currentStep -= 1 : this.currentStep += 1
+      if (input < 0 && this.currentStep > 0) {
+        this.currentStep -= 1
+      } else if (input > 0 && this.currentStep < 2) {
+        this.currentStep += 1
+      }
+    },
+    scrollTop () {
       window.scrollTo(0, 0)
     },
     autoFocus () {
