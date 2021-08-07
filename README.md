@@ -1,4 +1,4 @@
-# 時間記錄
+# 時間記錄（第四次練習時）
 - 第一小時：環境建置、HTML架構、配置素材、CSS reset、vue dark mode基本邏輯設定
 - 第二小時：header大小版、progress bar大小版（皆含dark mode）
 - 第三小時：表單三區塊小版
@@ -16,6 +16,7 @@
 
 ## CSS
 - [text-indent](https://developer.mozilla.org/en-US/docs/Web/CSS/text-indent): move placeholder text position
+- [Ant Design Pro: 分步表單](https://preview.pro.ant.design/form/step-form)
 
 ## vue
 - [How to call multiple functions with @click in vue?](https://stackoverflow.com/questions/38744932/how-to-call-multiple-functions-with-click-in-vue)
