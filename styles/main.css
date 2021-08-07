@@ -25,7 +25,7 @@ li {
   list-style: none;
 }
 
-:root {
+html {
   --primary-pink: #F67599;
   --white: #fff;
   --dark: #2A2A2A;
@@ -49,12 +49,12 @@ li {
   --footer-text: #808080;
 }
 
-[data-theme="dark"] {
+html[data-theme="dark"] {
   --white: #121212;
   --dark: #fff;
   --dark-10: rgba(255, 255, 255, .1);
   --progress-icon-gray: #C4C4C4;
-  --progress-line-tray: #D8D8D8;
+  --progress-line-gray: #D8D8D8;
   --form-label-text: rgba(255, 255, 255, .4);
   --form-border: #5E5E5E;
   --select-triangle: #5E5E5E;
@@ -375,7 +375,7 @@ main {
   left: calc(100% + 1rem);
   width: 99999px;
   height: 2px;
-  background-color: var(--progress-icon-gray);
+  background-color: var(--progress-line-gray);
 }
 
 .content-text {
