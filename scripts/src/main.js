@@ -1,11 +1,10 @@
 const axios = require('axios')
 const Vue = require('vue/dist/vue.js')
-const { uuid } = require('uuidv4')
+const { v4: uuidv4 } = require('uuid')
 
 const app = new Vue({
   el: '#app',
   data: {
-    blurTest: '',
     steps: ['寄送地址', '運送方式', '付款資訊'],
     currentStep: 0,
     categories: ['男款', '女款', '最新消息', '客製商品', '聯絡我們'],
@@ -20,14 +19,13 @@ const app = new Vue({
     navMenuIcon: './images/icon-nav-menu.svg',
     footerFbIcon: './images/icon-footer-fb.svg',
     footerIGIcon: './images/icon-footer-ig.svg',
-    footerTelIcon: './images/icon-footer-tel.svg',
-    darkMode: false
+    footerTelIcon: './images/icon-footer-tel.svg'
   },
   async created () {
     // chart items
     const chartItems = await this.fetchData('./data/chartItems.json')
     chartItems.chartItems.forEach(item => {
-      this.chartItems.push({ item, id: uuid() })
+      this.chartItems.push({ item, id: uuidv4() })
     })
   },
   methods: {
@@ -85,8 +83,28 @@ const app = new Vue({
         })
       }
     },
-    blurEventTest () {
-      console.log('blur event fire!')
+    darkModeMethod (event) {
+      if (event.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        this.navLogoSrc = './images/logo-dark.svg'
+        this.navSearchIcon = './images/icon-nav-search-dark.svg'
+        this.navChartIcon = './images/icon-nav-chart-dark.svg'
+        this.navModeIcon = './images/icon-nav-to-light-mode.svg'
+        this.navMenuIcon = './images/icon-nav-menu-dark.svg'
+        this.footerFbIcon = './images/icon-footer-fb-dark.svg'
+        this.footerIGIcon = './images/icon-footer-ig-dark.svg'
+        this.footerTelIcon = './images/icon-footer-tel-dark.svg'
+      } else {
+        document.documentElement.setAttribute('data-theme', '')
+        this.navLogoSrc = './images/logo.svg'
+        this.navSearchIcon = './images/icon-nav-search.svg'
+        this.navChartIcon = './images/icon-nav-chart.svg'
+        this.navModeIcon = './images/icon-nav-to-dark-mode.svg'
+        this.navMenuIcon = './images/icon-nav-menu.svg'
+        this.footerFbIcon = './images/icon-footer-fb.svg'
+        this.footerIGIcon = './images/icon-footer-ig.svg'
+        this.footerTelIcon = './images/icon-footer-tel.svg'
+      }
     }
   },
   computed: {
@@ -100,29 +118,6 @@ const app = new Vue({
     }
   },
   watch: {
-    darkMode: function (value) {
-      if (value) {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        this.navLogoSrc = './images/logo-dark.svg'
-        this.navSearchIcon = './images/icon-nav-search-dark.svg'
-        this.navChartIcon = './images/icon-nav-chart-dark.svg'
-        this.navModeIcon = './images/icon-nav-to-light-mode.svg'
-        this.navMenuIcon = './images/icon-nav-menu-dark.svg'
-        this.footerFbIcon = './images/icon-footer-fb-dark.svg'
-        this.footerIGIcon = './images/icon-footer-ig-dark.svg'
-        this.footerTelIcon = './images/icon-footer-tel-dark.svg'
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light')
-        this.navLogoSrc = './images/logo.svg'
-        this.navSearchIcon = './images/icon-nav-search.svg'
-        this.navChartIcon = './images/icon-nav-chart.svg'
-        this.navModeIcon = './images/icon-nav-to-dark-mode.svg'
-        this.navMenuIcon = './images/icon-nav-menu.svg'
-        this.footerFbIcon = './images/icon-footer-fb.svg'
-        this.footerIGIcon = './images/icon-footer-ig.svg'
-        this.footerTelIcon = './images/icon-footer-tel.svg'
-      }
-    },
     chartItems: {
       deep: true,
       handler () {

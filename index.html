@@ -17,7 +17,7 @@
       <label for="navListToggle" class="nav-toggle-label">
         <img :src="navMenuIcon" class="nav-toggle-label-icon">
       </label>
-      <input type="checkbox" id="navListToggle" class="nav-toggle-btn" @change="closeNavList($event)" @blur="blurEventTest">
+      <input type="checkbox" id="navListToggle" class="nav-toggle-btn" @change="closeNavList($event)" >
       <!-- nav list -->
       <nav class="header__nav">
         <!-- category -->
@@ -43,7 +43,7 @@
           </li>
           <li class="nav__list-container__item">
             <label href="#" for="darkModeSwitch" class="dark-mode-switch-label">
-              <input type="checkbox" id="darkModeSwitch" v-model="darkMode">
+              <input type="checkbox" id="darkModeSwitch" @change="darkModeMethod($event)">
               <img class="nav__icon" :src="navModeIcon">
             </label>
           </li>
