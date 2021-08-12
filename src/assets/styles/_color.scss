@@ -1,4 +1,4 @@
-html {
+[theme="default"] {
   --primary-pink: #F67599;
 
   --white: #fff;
@@ -23,7 +23,7 @@ html {
   --footer-text: #808080;
 }
 
-html[data-theme="dark"] {
+[theme="dark"] {
   --white: #121212;
   --dark: #fff;
   --dark-10: rgba(255, 255, 255, .1);
