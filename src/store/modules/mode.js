@@ -1,5 +1,5 @@
 const state = {
-  mode: 'default',
+  mode: '',
   logoSrc: 'logo.svg',
   navSearchIcon: 'icon-nav-search.svg',
   navChartIcon: 'icon-nav-chart.svg',
@@ -24,6 +24,7 @@ const getters = {
 
 const actions = {
   setMode ({ commit }, mode) {
+    window.localStorage.setItem('alphaShopTheme', mode)
     commit('updateMode', mode)
     commit('updateIconSrc', mode)
   }
