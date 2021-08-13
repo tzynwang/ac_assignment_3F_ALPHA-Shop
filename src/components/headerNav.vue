@@ -35,7 +35,7 @@
       <!-- operation -->
       <ul class="nav__list-container operation">
         <li class="nav__list-container__item search-container">
-          <a href="#">
+          <a href="#" class="nav__list-container__item__link">
             <label
               class="search-input-label"
               for="searchInput"
@@ -50,19 +50,19 @@
           </a>
         </li>
         <li class="nav__list-container__item">
-          <a href="#">
+          <router-link :to="{ name: 'purchase' }" class="nav__list-container__item__link">
             <img
               :src="require(`@/assets/images/${getNavChartIcon}`)"
               alt="nav bar chart icon"
             />
-          </a>
+          </router-link>
         </li>
         <li class="nav__list-container__item">
           <label for="darkModeSwitch" class="dark-mode-switch-label">
             <input
               type="checkbox"
               id="darkModeSwitch"
-              @change="darkModeMethod($event)"
+              @change="darkModeMethod()"
             />
             <img
               class="nav__icon"
@@ -75,11 +75,13 @@
     </nav>
     <!-- logo -->
     <div class="header__logo">
-      <img
+      <router-link :to="{ name: 'home' }">
+        <img
         class="header__logo--image"
         :src="require(`@/assets/images/${getLogoSrc}`)"
         alt="nav bar logo"
       />
+      </router-link>
     </div>
   </header>
 </template>
@@ -91,8 +93,8 @@ export default {
   name: "headerNav",
   methods: {
     ...mapActions(["setMode"]),
-    darkModeMethod (event) {
-      event.target.checked ? this.setMode("dark") : this.setMode("default")
+    darkModeMethod () {
+      this.getMode === "default" ? this.setMode("dark") : this.setMode("default")
     }
   },
   computed: {
@@ -102,6 +104,7 @@ export default {
       "getNavChartIcon",
       "getNavModeIcon",
       "getNavMenuIcon",
+      "getMode"
     ]),
   },
 };
