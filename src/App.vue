@@ -1,13 +1,13 @@
 <template>
   <div id="app" :theme="getMode">
     <headerNav />
-    <div class="mock"></div>
+    <router-view/>
     <footerComponent />
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 import headerNav from "./components/headerNav.vue"
 import footerComponent from "./components/footerComponent.vue"
@@ -20,15 +20,21 @@ export default {
   },
   computed: {
     ...mapGetters(["getMode"])
+  },
+  created () {
+    if (!window.localStorage.getItem("alphaShopTheme")) {
+      window.localStorage.setItem("alphaShopTheme", "default")
+    } else {
+      const mode = window.localStorage.getItem("alphaShopTheme")
+      this.setMode(mode)
+    }
+  },
+  methods: {
+    ...mapActions(["setMode"])
   }
 };
 </script>
 
 <style lang="scss">
-@import "./assets/styles/main.scss";
-
-.mock {
-  height: 600px;
-  background-color: rgb(94, 184, 58);
-}
+@import "@/assets/styles/main.scss";
 </style>
