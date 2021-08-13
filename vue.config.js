@@ -6,6 +6,7 @@ module.exports = {
           @import "@/assets/styles/_reset.scss";
           @import "@/assets/styles/_color.scss";
           @import "@/assets/styles/_mixin.scss";
+          @import "@/assets/styles/main.scss";
         `
       }
     }

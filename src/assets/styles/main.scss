@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap');
 
 // general setting start
+#app {
+  background-color: var(--white);
+}
+
 .container {
   width: 100%;
   padding: 0 5%;
