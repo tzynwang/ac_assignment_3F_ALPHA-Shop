@@ -7,64 +7,77 @@
         't-align-left',
         { 'd-none': getCurrentStep === 0 },
       ]"
-      @click.prevent="
-        setCurrentStep(-1);
-        scrollTop();
-      "
+      @click.prevent="formCheck(-1)"
     >
       ← 上一步
     </button>
-    <button
-      class="btn btn-primary"
-      @click.prevent="
-        setCurrentStep(1);
-        scrollTop();
-        mutateFormState(true);
-      "
-    >
+    <button class="btn btn-primary" @click.prevent="formCheck(1)">
       {{ getCurrentStep | nextBtnText }}
     </button>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex"
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "purchaseButtonsGroup",
   computed: {
-    ...mapGetters(["getCurrentStep", "getFormInput", "getSelectedDeliveryFee"])
+    ...mapGetters(["getCurrentStep", "getFormInput", "getSelectedDeliveryFee"]),
   },
   methods: {
     ...mapActions(["setCurrentStep", "setFormState"]),
-    scrollTop () {
-      window.scrollTo(0, 0)
+    scrollTop() {
+      window.scrollTo(0, 0);
     },
-    mutateFormState (state) {
-      if (this.getCurrentStep === 3) {
-        this.setFormState(state)
-        // const formInput = { ...this.getFormInput }
-        // console.log(`
-        // title: ${formInput.title}
-        // name: ${formInput.name}
-        // tel: ${formInput.tel}
-        // email: ${formInput.email}
-        // city: ${formInput.city}
-        // address: ${formInput.address}
-        // cardHolderName: ${formInput.cardHolderName}
-        // cardNumber: ${formInput.cardNumber}
-        // cardExpiredDate: ${formInput.cardExpiredDate}
-        // cardCvc: ${formInput.cardCvc}
-        // deliveryFee: ${this.getSelectedDeliveryFee}
-        // `)
+    formCheck(stepMove) {
+      switch (this.getCurrentStep) {
+        case 0:
+          if (
+            !this.getTrimLength(this.getFormInput.title) ||
+            !this.getTrimLength(this.getFormInput.name) ||
+            !this.getTrimLength(this.getFormInput.tel) ||
+            !this.getTrimLength(this.getFormInput.email) ||
+            !this.getTrimLength(this.getFormInput.city) ||
+            !this.getTrimLength(this.getFormInput.address)
+          ) {
+            return;
+          } else {
+            this.setCurrentStep(stepMove);
+            this.scrollTop();
+          }
+          break;
+        case 1:
+          this.setCurrentStep(stepMove);
+          this.scrollTop();
+          break;
+        case 2:
+          if (
+            !this.getTrimLength(this.getFormInput.cardHolderName) ||
+            !this.getTrimLength(this.getFormInput.cardNumber) ||
+            !this.getTrimLength(this.getFormInput.cardExpiredDate) ||
+            !this.getTrimLength(this.getFormInput.cardCvc)
+          ) {
+            return;
+          } else if (stepMove === 1) {
+            this.scrollTop();
+            this.setFormState(true);
+          } else {
+            this.scrollTop();
+            this.setFormState(false);
+            this.setCurrentStep(stepMove);
+          }
       }
-    }
+    },
+    getTrimLength(input) {
+      return input.trim().length;
+    },
   },
   filters: {
-    nextBtnText (step) {
-      return step < 2 ? '下一步 →' : '確認下單'
-    }
-  }
+    nextBtnText(step) {
+      return step < 2 ? "下一步 →" : "確認下單";
+    },
+  },
 };
 </script>
 

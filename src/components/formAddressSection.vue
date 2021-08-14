@@ -10,6 +10,7 @@
             id="title"
             required
             @change="setInput({ field: 'title', event: $event })"
+            :class="{ 'input-empty-hint': !getTrimLength(getFormInput.title) }"
           >
             <option value="" selected disabled>請選擇</option>
             <option value="m">先生</option>
@@ -26,6 +27,7 @@
           id="name"
           placeholder="請輸入姓名"
           @change="setInput({ field: 'name', event: $event })"
+          :class="{ 'input-empty-hint': !getTrimLength(getFormInput.name) }"
         />
       </div>
     </div>
@@ -38,6 +40,7 @@
           id="tel"
           placeholder="請輸入行動電話"
           @change="setInput({ field: 'tel', event: $event })"
+          :class="{ 'input-empty-hint': !getTrimLength(getFormInput.tel) }"
         />
       </div>
       <div class="form-row">
@@ -48,6 +51,7 @@
           id="email"
           placeholder="請輸入電子郵件"
           @change="setInput({ field: 'email', event: $event })"
+          :class="{ 'input-empty-hint': !getTrimLength(getFormInput.email) }"
         />
       </div>
     </div>
@@ -55,7 +59,13 @@
       <div class="form-row">
         <label for="city">縣市</label>
         <div class="select-wrapper">
-          <select name="city" id="city" required @change="setInput({ field: 'city', event: $event })">
+          <select
+            name="city"
+            id="city"
+            required
+            @change="setInput({ field: 'city', event: $event })"
+            :class="{ 'input-empty-hint': !getTrimLength(getFormInput.city) }"
+          >
             <option value="" selected disabled>請選擇</option>
             <option value="TPE">臺北市</option>
             <option value="NTPC">新北市</option>
@@ -74,6 +84,7 @@
           id="address"
           placeholder="請輸入地址"
           @change="setInput({ field: 'address', event: $event })"
+          :class="{ 'input-empty-hint': !getTrimLength(getFormInput.address) }"
         />
       </div>
     </div>
@@ -81,12 +92,18 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "formAddressSection",
   methods: {
     ...mapActions(["setInput"]),
+    getTrimLength(input) {
+      return input.trim().length;
+    },
+  },
+  computed: {
+    ...mapGetters(["getFormInput"]),
   },
 };
 </script>

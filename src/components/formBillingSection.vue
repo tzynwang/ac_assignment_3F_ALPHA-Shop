@@ -11,6 +11,7 @@
         id="cardHolderName"
         placeholder="John Doe"
         @change="setInput({ field: 'cardHolderName', event: $event })"
+        :class="{ 'input-empty-hint': !getTrimLength(getFormInput.cardHolderName) }"
       />
     </div>
     <div class="form-row">
@@ -22,6 +23,7 @@
         id="cardNumber"
         placeholder="1111 2222 3333 4444"
         @change="setInput({ field: 'cardNumber', event: $event })"
+        :class="{ 'input-empty-hint': !getTrimLength(getFormInput.cardNumber) }"
       />
     </div>
     <div class="row-group card-expDate-and-cvc">
@@ -34,6 +36,7 @@
           id="cardExpiredDate"
           placeholder="MM/YY"
           @change="setInput({ field: 'cardExpiredDate', event: $event })"
+          :class="{ 'input-empty-hint': !getTrimLength(getFormInput.cardExpiredDate) }"
         />
       </div>
       <div class="form-row">
@@ -45,6 +48,7 @@
           id="cardCvc"
           placeholder="123"
           @change="setInput({ field: 'cardCvc', event: $event })"
+          :class="{ 'input-empty-hint': !getTrimLength(getFormInput.cardCvc) }"
         />
       </div>
     </div>
@@ -52,12 +56,18 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "formBillingSection",
   methods: {
     ...mapActions(["setInput"]),
+    getTrimLength(input) {
+      return input.trim().length;
+    },
+  },
+  computed: {
+    ...mapGetters(["getFormInput"]),
   },
 };
 </script>
