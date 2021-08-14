@@ -364,10 +364,11 @@ main {
   }
 
   input {
-    // test color
-    &:-internal-autofill-selected {
-      background-color: red !important;
-      color: yellow !important;
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: var(--dark);
+      box-shadow: 0 0 0 1000px var(--white) inset;
     }
   }
 
@@ -377,11 +378,11 @@ main {
   }
 
   .input-empty-hint {
-    border-color: red;
+    border-color: var(--primary-pink);
 
     &:focus {
       outline: none;
-      border: 1px solid red;
+      border: 1px solid var(--primary-pink);
     }
   }
 
