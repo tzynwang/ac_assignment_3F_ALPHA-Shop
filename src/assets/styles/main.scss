@@ -662,6 +662,7 @@ footer {
     .nav__list-container__item {
       width: auto;
       border: none;
+      font-size: clamp(12px, 1.5vw, 16px);
 
       &+.nav__list-container__item {
         margin-left: clamp(.25rem, 1vw, 32px);
