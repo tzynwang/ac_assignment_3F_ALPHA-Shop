@@ -577,11 +577,22 @@ main {
 }
 
 // order summary modal start
-.order-summary {
+.modal-container {
   position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-60);
+}
+
+.order-summary {
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: clamp(300px, 50vw, 450px);
   padding: 2rem;
   border-radius: 4px;
   background-color: var(--white);
@@ -597,6 +608,7 @@ main {
   display: inline-block;
   width: 24px;
   height: 24px;
+  cursor: pointer;
 
   &::before,
   &::after {
