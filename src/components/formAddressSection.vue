@@ -26,7 +26,7 @@
           name="name"
           id="name"
           placeholder="請輸入姓名"
-          @change="setInput({ field: 'name', event: $event })"
+          @change="onInputChange({ field: 'name', event: $event })"
           :class="{ 'input-empty-hint': !getTrimLength(getFormInput.name) }"
         />
       </div>
@@ -39,7 +39,7 @@
           name="tel"
           id="tel"
           placeholder="請輸入行動電話"
-          @change="setInput({ field: 'tel', event: $event })"
+          @change="onInputChange({ field: 'tel', event: $event })"
           :class="{ 'input-empty-hint': !getTrimLength(getFormInput.tel) }"
         />
       </div>
@@ -50,7 +50,7 @@
           name="email"
           id="email"
           placeholder="請輸入電子郵件"
-          @change="setInput({ field: 'email', event: $event })"
+          @change="onInputChange({ field: 'email', event: $event })"
           :class="{ 'input-empty-hint': !getTrimLength(getFormInput.email) }"
         />
       </div>
@@ -83,7 +83,7 @@
           name="address"
           id="address"
           placeholder="請輸入地址"
-          @change="setInput({ field: 'address', event: $event })"
+          @change="onInputChange({ field: 'address', event: $event })"
           :class="{ 'input-empty-hint': !getTrimLength(getFormInput.address) }"
         />
       </div>
@@ -98,6 +98,23 @@ export default {
   name: "formAddressSection",
   methods: {
     ...mapActions(["setInput"]),
+    onInputChange(inputObject) {
+      const value = inputObject.event.target.value
+      const regex = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$");
+      switch (inputObject.field) {
+        case "tel":
+          if (value.length === 10 && !isNaN(parseInt(value, 10)))
+            this.setInput(inputObject);
+          break;
+        case "email":
+          if (regex.test(value))
+            this.setInput(inputObject);
+          break;
+        default:
+          if (value.trim().length)
+            this.setInput(inputObject);
+      }
+    },
     getTrimLength(input) {
       return input.trim().length;
     },
