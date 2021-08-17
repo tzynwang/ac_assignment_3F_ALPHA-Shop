@@ -35,9 +35,11 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import { dollarSign } from "../utils/mixins"
 
 export default {
   name: 'formDeliverySection',
+  mixins: [dollarSign],
   methods: {
     ...mapActions(["setDeliveryFee"]),
     mutateDeliveryFee (fee) {
@@ -47,11 +49,11 @@ export default {
   computed: {
     ...mapGetters(["getDeliveryFee"]),
   },
-  filters: {
-    dollarSign (price) {
-      return price === 0 ? '免費' : `$ ${price}`
-    }
-  }
+  // filters: {
+  //   dollarSign (price) {
+  //     return price === 0 ? '免費' : `$ ${price}`
+  //   }
+  // }
 };
 </script>
 

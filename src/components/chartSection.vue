@@ -56,6 +56,7 @@
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { mapGetters, mapActions } from "vuex";
+import { dollarSign } from "../utils/mixins"
 
 export default {
   name: "chartSection",
@@ -67,6 +68,7 @@ export default {
     });
     this.setChartItems(chartItems);
   },
+  mixins: [dollarSign],
   methods: {
     ...mapActions(["setChartItems", "setChartItemQty", "setOrderSum"]),
     mutateChartItemQty(mutateObj) {
@@ -85,11 +87,11 @@ export default {
       return orderSum;
     },
   },
-  filters: {
-    dollarSign(price) {
-      return price === 0 ? "免費" : `$ ${price}`;
-    },
-  },
+  // filters: {
+  //   dollarSign(price) {
+  //     return price === 0 ? "免費" : `$ ${price}`;
+  //   },
+  // },
 };
 </script>
 
