@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="form-section billing-info"
-  >
+  <div class="form-section billing-info">
     <h2 class="title">付款資訊</h2>
     <div class="form-row">
       <label for="cardHolderName">持卡人姓名</label>
@@ -10,8 +8,10 @@
         name="cardHolderName"
         id="cardHolderName"
         placeholder="John Doe"
-        @change="setInput({ field: 'cardHolderName', event: $event })"
-        :class="{ 'input-empty-hint': !getTrimLength(getFormInput.cardHolderName) }"
+        @change="onInputChange({ field: 'cardHolderName', event: $event })"
+        :class="{
+          'input-empty-hint': !getTrimLength(getFormInput.cardHolderName),
+        }"
       />
     </div>
     <div class="form-row">
@@ -21,8 +21,8 @@
         inputmode="numeric"
         name="cardNumber"
         id="cardNumber"
-        placeholder="1111 2222 3333 4444"
-        @change="setInput({ field: 'cardNumber', event: $event })"
+        placeholder="1111222233334444"
+        @change="onInputChange({ field: 'cardNumber', event: $event })"
         :class="{ 'input-empty-hint': !getTrimLength(getFormInput.cardNumber) }"
       />
     </div>
@@ -34,9 +34,11 @@
           inputmode="numeric"
           name="cardExpiredDate"
           id="cardExpiredDate"
-          placeholder="MM/YY"
-          @change="setInput({ field: 'cardExpiredDate', event: $event })"
-          :class="{ 'input-empty-hint': !getTrimLength(getFormInput.cardExpiredDate) }"
+          placeholder="MMYY"
+          @change="onInputChange({ field: 'cardExpiredDate', event: $event })"
+          :class="{
+            'input-empty-hint': !getTrimLength(getFormInput.cardExpiredDate),
+          }"
         />
       </div>
       <div class="form-row">
@@ -47,7 +49,7 @@
           name="cardCvc"
           id="cardCvc"
           placeholder="123"
-          @change="setInput({ field: 'cardCvc', event: $event })"
+          @change="onInputChange({ field: 'cardCvc', event: $event })"
           :class="{ 'input-empty-hint': !getTrimLength(getFormInput.cardCvc) }"
         />
       </div>
@@ -62,6 +64,33 @@ export default {
   name: "formBillingSection",
   methods: {
     ...mapActions(["setInput"]),
+    onInputChange(inputObject) {
+      const value = inputObject.event.target.value
+      switch (inputObject.field) {
+        case "cardNumber":
+          if (value.length === 16 && !isNaN(parseInt(value, 10)))
+            this.setInput(inputObject);
+          break;
+        case "cardExpiredDate":
+          if (
+            value.length === 4 &&
+            !isNaN(parseInt(value, 10)) &&
+            parseInt(value.slice(0, 2), 10) <= 12 &&
+            parseInt(value.slice(0, 2), 10) >= 1 &&
+            parseInt(value.slice(2, 4), 10) >= 
+            parseInt(new Date().getFullYear().toString().slice(2, 4), 10)
+          )
+            this.setInput(inputObject);
+          break;
+        case "cardCvc":
+          if (value.length === 3 && !isNaN(parseInt(value, 10)))
+            this.setInput(inputObject);
+            break
+        default:
+          if (value.trim().length)
+            this.setInput(inputObject);
+      }
+    },
     getTrimLength(input) {
       return input.trim().length;
     },
