@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 .primary {
-  padding: 8vh 0; // 80vh * 10%
+  padding-top: 8vh; // 80vh * 10%
   margin-top: -16vh;
 
   [class^="primary__container"] {
