@@ -39,17 +39,48 @@ export default {
   .btn {
     flex: unset;
     height: unset;
+    border-radius: unset;
 
+    position: relative;
     padding: 1rem 3rem;
 
     letter-spacing: 0.5rem;
     text-transform: uppercase;
 
-    color: var(--dark);
+    color: #fff;
     background-color: var(--primary-pink);
 
-    animation: moveFromBottom .75s ease-out;
-    animation-fill-mode: backwards
+    transition: 0.3s ease-out;
+    animation: moveFromBottom 0.75s ease-out;
+    animation-fill-mode: backwards;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary-pink);
+      transition: 0.3s ease-out;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 8px 2px var(--dark-60);
+
+      &::after {
+      content: "";
+      transform: scale(1.2, 1.4);
+      opacity: 0;
+    }
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px 0 var(--dark-60);
+    }
   }
 }
 
@@ -68,7 +99,7 @@ export default {
     font-size: clamp(2rem, 9vw, 6rem);
     letter-spacing: 0.5rem;
 
-    animation: moveFromLeft .75s ease-out;
+    animation: moveFromLeft 0.75s ease-out;
   }
 
   &--sub {
@@ -81,46 +112,46 @@ export default {
 }
 
 @keyframes moveFromLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
 
-    80% {
-        transform: translateX(1rem);
-    }
+  80% {
+    transform: translateX(1rem);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 @keyframes moveFromRight {
-    0% {
-        opacity: 0;
-        transform: translateX(10rem);
-    }
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
 
-    80% {
-        transform: translateX(-1rem);
-    }
+  80% {
+    transform: translateX(-1rem);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 @keyframes moveFromBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 </style>
