@@ -71,10 +71,8 @@ export default {
       }
     }
 
-    &:hover {
-      .secondary__image-container__image:not(:hover) {
-        transform: scale(0.9);
-      }
+    &:hover &__image:not(:hover) {
+      transform: scale(0.9);
     }
   }
 }
