@@ -94,25 +94,25 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 
+import isMobilePhone from "validator/lib/isMobilePhone";
+import isEmail from "validator/lib/isEmail";
+import isEmpty from "validator/lib/isEmpty";
+
 export default {
   name: "formAddressSection",
   methods: {
     ...mapActions(["setInput"]),
     onInputChange(inputObject) {
-      const value = inputObject.event.target.value
-      const regex = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$");
+      const value = inputObject.event.target.value;
       switch (inputObject.field) {
         case "tel":
-          if (value.length === 10 && !isNaN(parseInt(value, 10)))
-            this.setInput(inputObject);
+          if (isMobilePhone(value, "zh-TW")) this.setInput(inputObject);
           break;
         case "email":
-          if (regex.test(value))
-            this.setInput(inputObject);
+          if (isEmail(value)) this.setInput(inputObject);
           break;
         default:
-          if (value.trim().length)
-            this.setInput(inputObject);
+          if (!isEmpty(value)) this.setInput(inputObject);
       }
     },
     getTrimLength(input) {

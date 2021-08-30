@@ -29,7 +29,7 @@
     <div class="row-group card-expDate-and-cvc">
       <div class="form-row">
         <label for="cardExpiredDate">有效期限</label>
-        <input
+        <!-- <input
           type="tel"
           inputmode="numeric"
           name="cardExpiredDate"
@@ -39,6 +39,16 @@
           :class="{
             'input-empty-hint': !getTrimLength(getFormInput.cardExpiredDate),
           }"
+        /> -->
+        <input
+          type="month"
+          name="cardExpiredDate"
+          id="cardExpiredDate"
+          @change="onInputChange({ field: 'cardExpiredDate', event: $event })"
+          :class="{
+            'input-empty-hint': !getTrimLength(getFormInput.cardExpiredDate),
+          }"
+          :style="calendarIcon"
         />
       </div>
       <div class="form-row">
@@ -60,35 +70,28 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 
+import isCreditCard from "validator/lib/isCreditCard";
+import isAfter from "validator/lib/isAfter";
+import isInt from "validator/lib/isInt";
+
 export default {
   name: "formBillingSection",
   methods: {
     ...mapActions(["setInput"]),
     onInputChange(inputObject) {
-      const value = inputObject.event.target.value
+      const value = inputObject.event.target.value;
       switch (inputObject.field) {
         case "cardNumber":
-          if (value.length === 16 && !isNaN(parseInt(value, 10)))
-            this.setInput(inputObject);
+          if (isCreditCard(value)) this.setInput(inputObject);
           break;
         case "cardExpiredDate":
-          if (
-            value.length === 4 &&
-            !isNaN(parseInt(value, 10)) &&
-            parseInt(value.slice(0, 2), 10) <= 12 &&
-            parseInt(value.slice(0, 2), 10) >= 1 &&
-            parseInt(value.slice(2, 4), 10) >= 
-            parseInt(new Date().getFullYear().toString().slice(2, 4), 10)
-          )
-            this.setInput(inputObject);
+          if (isAfter(value)) this.setInput(inputObject);
           break;
         case "cardCvc":
-          if (value.length === 3 && !isNaN(parseInt(value, 10)))
-            this.setInput(inputObject);
-            break
+          if (value.length === 3 && isInt(value)) this.setInput(inputObject);
+          break;
         default:
-          if (value.trim().length)
-            this.setInput(inputObject);
+          if (value.trim().length) this.setInput(inputObject);
       }
     },
     getTrimLength(input) {
@@ -96,10 +99,25 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getFormInput"]),
+    ...mapGetters(["getFormInput", "getFormCalendarIcon"]),
+    calendarIcon() {
+      return {
+        "--calendar-icon": this.getFormCalendarIcon,
+      };
+    },
   },
 };
 </script>
 
-<style>
+<style lang="scss">
+input {
+  // set customized input type="month" calendar icon
+  &::-webkit-inner-spin-button,
+  &::-webkit-calendar-picker-indicator {
+    position: relative;
+    right: 1rem;
+    cursor: pointer;
+    background-image: var(--calendar-icon);
+  }
+}
 </style>
