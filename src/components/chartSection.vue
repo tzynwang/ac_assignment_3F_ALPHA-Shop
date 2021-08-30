@@ -60,6 +60,19 @@ import { dollarSign } from "../utils/mixins"
 
 export default {
   name: "chartSection",
+  props: {
+    // for AC review
+    chartItemsFromParent: {
+      type: Array,
+      required: true
+    }
+  },
+  data() {
+    return {
+      // for AC review
+      chartItems: []
+    }
+  },
   async created() {
     const response = await axios.get("./data/chartItems.json");
     const chartItems = [];
@@ -67,6 +80,9 @@ export default {
       chartItems.push({ ...item, id: uuidv4() });
     });
     this.setChartItems(chartItems);
+
+    // for AC review
+    this.chartItems = this.chartItemsFromParent
   },
   mixins: [dollarSign],
   methods: {
@@ -86,12 +102,7 @@ export default {
       this.setOrderSum(orderSum)
       return orderSum;
     },
-  },
-  // filters: {
-  //   dollarSign(price) {
-  //     return price === 0 ? "免費" : `$ ${price}`;
-  //   },
-  // },
+  }
 };
 </script>
 

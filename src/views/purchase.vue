@@ -13,7 +13,7 @@
       </div>
 
       <div class="chart-section">
-        <chartSection />
+        <chartSection :chart-items-from-parent="chartItemsFromParent" />
         <purchaseButtonsGroup v-if="windowWidth <= 768" />
       </div>
 
@@ -23,6 +23,9 @@
 </template>
 
 <script>
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+
 import { mapGetters } from "vuex";
 
 import progressBar from "../components/progressBar.vue";
@@ -47,7 +50,15 @@ export default {
   data() {
     return {
       windowWidth: window.innerWidth,
+      chartItemsFromParent: [] // for AC review
     };
+  },
+  async created() {
+    // for AC review
+    const response = await axios.get("./data/chartItems.json");
+    response.data.chartItems.forEach((item) => {
+      this.chartItemsFromParent.push({ ...item, id: uuidv4() });
+    });
   },
   mounted() {
     window.onresize = () => {
