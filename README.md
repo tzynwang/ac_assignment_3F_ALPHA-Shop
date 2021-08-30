@@ -11,8 +11,8 @@ https://tzynwang.github.io/ac_assignment_3F_ALPHA-Shop/
 1. 於終端機按兩次`Ctrl`+`c`結束連線
 
 # 測試用信用卡資料
-卡號：5105105105105100
-CVC：123
+- 卡號：5105105105105100
+- CVC：123
 
 # 時間記錄
 ## 第五次練習
