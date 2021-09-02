@@ -58,6 +58,8 @@ export default {
     const response = await axios.get("./data/chartItems.json");
     response.data.chartItems.forEach((item) => {
       this.chartItemsFromParent.push({ ...item, id: uuidv4() });
+      // test
+      const text = '123';
     });
   },
   mounted() {

@@ -256,7 +256,7 @@ main {
   background-color: transparent;
 
   text-align: center;
-  line-height: 32px;
+  line-height: 30px; // manually adjust to visually vertical center, 32px looks not centered
   color: var(--progress-icon-gray);
 }
 
@@ -674,7 +674,7 @@ footer {
     .nav__list-container__item {
       width: auto;
       border: none;
-      font-size: clamp(12px, 1.5vw, 16px);
+      font-size: clamp(11px, 1.4vw, 16px);
 
       &+.nav__list-container__item {
         margin-left: clamp(.25rem, 1vw, 32px);
