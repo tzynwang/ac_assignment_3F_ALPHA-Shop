@@ -1,0 +1,14 @@
+{
+  "chartItems": [
+    { "image": "chart-img-1.png",
+      "title": "破壞補釘修身牛仔褲",
+      "price": 3999,
+      "qty": 1
+    },
+    { "image": "chart-img-2.png",
+      "title": "刷色直筒牛仔褲",
+      "price": 1299,
+      "qty": 1
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0e95df"],{"8cdb":function(t,e,n){"use strict";n.r(e);var c=function(){var t=this,e=t.$createElement;t._self._c;return t._m(0)},s=[function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("main",{staticClass:"container"},[n("h1",{staticClass:"title"},[t._v("404 (´・ω・`) 沒有這個頁面")])])}],a=n("2877"),l={},i=Object(a["a"])(l,c,s,!1,null,null,null);e["default"]=i.exports}}]);
+//# sourceMappingURL=chunk-2d0e95df.bb065b65.js.map
